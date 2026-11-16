@@ -43,7 +43,7 @@
   .chip .n{font-family:var(--mono);color:var(--ice);font-weight:600}
   .chip.top{border-color:var(--ice-strong);box-shadow:0 0 0 1px var(--ice-strong) inset}
 
-  main{max-width:1800px;margin:0 auto;padding:16px 20px 40px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(var(--card-min,380px),1fr))}
+  main{max-width:1800px;margin:0 auto;padding:16px 20px 40px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(var(--card-min,380px),100%),1fr))}
   body[data-size="lg"] main{--card-min:560px}
   body[data-size="sm"] main{--card-min:300px}
 
@@ -57,8 +57,56 @@
   .card-h .temp{font-family:var(--mono);font-size:22px;font-weight:600;line-height:1}
   .card-h .cond{font-size:11.5px;color:var(--muted);margin-top:4px}
 
-  .cams{display:grid;gap:2px;background:#000}
-  .cams.two{grid-template-columns:1fr 1fr}
+  /* Swipeable cam carousel */
+  .cams{position:relative;background:#000}
+  .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+  .track::-webkit-scrollbar{display:none}
+  .track .cam{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
+  .nav{all:unset;position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;display:grid;place-items:center;cursor:pointer;z-index:2;
+       font-size:18px;font-weight:900;line-height:1;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;opacity:0;transition:opacity .2s}
+  .nav.prev{left:8px} .nav.next{right:8px}
+  .cams:hover .nav,.nav:focus-visible{opacity:1}
+  .nav[disabled]{opacity:0!important;pointer-events:none}
+  @media (hover:none){ .nav{display:none} }
+  .pager{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:5px;z-index:2;pointer-events:none}
+  .pager button{all:unset;pointer-events:auto;cursor:pointer;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);transition:width .2s}
+  .pager button[aria-current="true"]{width:18px;border-radius:4px;background:#fff}
+  .count{position:absolute;right:8px;bottom:8px;z-index:2;font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.6);color:#fff;pointer-events:none}
+  .cam .kind{position:absolute;left:8px;top:8px;font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+  .cam .kind.stake{background:#fff;color:#111}
+  .cam .kind.trail{background:#4F9466;color:#fff}
+  .cam .kind.base{background:#4F7FD6;color:#fff}
+  .cam .lbl{bottom:30px!important}
+
+  /* Trail conditions */
+  .trail{border-top:1px solid var(--line);padding:10px 14px 12px;display:grid;gap:8px}
+  .trail-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .trail-h .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+  .pill{font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+  .pill.open{background:var(--good);color:#fff} .pill.soon{background:var(--warn);color:#1d1a16} .pill.closed{background:#9a8f83;color:#fff}
+  .trail-h .when{margin-left:auto;font-size:11px;color:var(--muted)}
+  .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .tm .n{font-family:var(--display,var(--mono));font-weight:900;font-size:20px;line-height:1}
+  .tm .n small{font-family:var(--sans);font-size:11px;font-weight:700;color:var(--muted)}
+  .tm .l{font-size:10px;text-transform:uppercase;letter-spacing:.8px;font-weight:800;color:var(--dim);margin-top:3px}
+  .tm .meter{height:6px;margin-top:5px;border-radius:3px;background:rgba(29,26,22,.12);overflow:hidden}
+  .tm .meter i{display:block;height:100%;background:var(--good)}
+  .trail-f{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px}
+  .trail-f .surf{color:var(--muted);font-weight:700;margin-right:auto}
+  .jump{all:unset;cursor:pointer;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;white-space:nowrap;border-radius:999px;border:2px solid var(--line)}
+  .jump:hover{background:var(--ink,#000);color:var(--cream,#fff)}
+  .trail details summary{cursor:pointer;font-size:11px;font-weight:800;color:var(--red,var(--ice));text-transform:uppercase;letter-spacing:1px;list-style:none}
+  .trail details summary::-webkit-details-marker{display:none}
+  .trail details p{margin:6px 0 0;font-size:12.5px;line-height:1.5}
+  .trail .na{font-size:12.5px;color:var(--muted)}
+
+  /* Lightbox carousel nav */
+  .lb-body{position:relative}
+  .lb-nav{all:unset;cursor:pointer;position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;display:grid;place-items:center;border-radius:50%;
+          font-size:22px;font-weight:900;background:var(--cream,#fff);color:var(--ink,#000);border:3px solid var(--ink,#000);z-index:2}
+  .lb-nav.prev{left:16px} .lb-nav.next{right:16px}
+  .lb-count{font-size:12px;font-weight:800;color:var(--ink);letter-spacing:1px}
+
   .cam{position:relative;aspect-ratio:4/3;background:#06090d;cursor:zoom-in;overflow:hidden}
   .cam img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .3s}
   .cam .lbl{position:absolute;left:8px;bottom:8px;font-size:11px;font-weight:600;background:rgba(0,0,0,.6);padding:3px 7px;border-radius:6px;backdrop-filter:blur(4px)}
@@ -174,6 +222,24 @@
   .cam .lbl{background:var(--cream);color:var(--ink);border:2px solid var(--ink);border-radius:999px;font-weight:800;padding:3px 9px;backdrop-filter:none}
   .cam .live{background:var(--red);color:var(--cream);border:2px solid var(--ink);border-radius:999px;font-weight:900;padding:3px 9px}
   .cam .err{color:var(--cream)}
+  .nav{background:var(--cream);color:var(--ink);border:3px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+  .count{background:var(--cream);color:var(--ink);border:2px solid var(--ink)}
+  .cam .kind{border:2px solid var(--ink)}
+  .cam .kind.stake{background:var(--cream);color:var(--ink)}
+  .cam .kind.trail{background:var(--green)} .cam .kind.base{background:var(--blue)}
+  .pager button{background:rgba(255,244,220,.6);box-shadow:0 0 0 1.5px var(--ink)}
+  .pager button[aria-current="true"]{background:var(--ikon)}
+
+  .trail{border-top:3px solid var(--ink);background:var(--cream)}
+  .trail-h .k{color:var(--ink)}
+  .pill{border:2px solid var(--ink)}
+  .pill.open{background:var(--green);color:var(--cream)} .pill.soon{background:var(--orange);color:var(--ink)} .pill.closed{background:var(--cream2);color:var(--ink)}
+  .trail-h .when{color:var(--dim);font-weight:700}
+  .tm .n{color:var(--ink)}
+  .tm .meter{border:2px solid var(--ink);height:9px;background:var(--cream2)}
+  .tm .meter i{background:var(--green)}
+  .jump{border:2px solid var(--ink);color:var(--ink);background:var(--cream);box-shadow:2px 2px 0 var(--ink)}
+  .jump.trailcams{background:var(--green);color:var(--cream)}
 
   .stats{border-top:0}
   .stat{border-right:3px solid var(--ink)}
@@ -213,7 +279,7 @@
       <svg class="flake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M4.2 6.5l15.6 11M4.2 17.5l15.6-11M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5"/></svg>
       Colorado Ikon Mountain Conditions
     </h1>
-    <span class="sub">9 mountains · live stake cams + forecast</span>
+    <span class="sub">9 mountains · stake &amp; trail cams · lifts/trails · forecast</span>
     <span class="spacer"></span>
     <div class="controls">
       <div class="seg" role="group" aria-label="Sort">
@@ -239,12 +305,14 @@
   Cam images: resort snow stake cameras (served via OpenSnow's public cam mirror, with resort feeds as fallback). They refresh every 5 minutes.
   Weather: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> model data at each stake's elevation (snowfall totals are model estimates, not the resort's official report) and the
   <a href="https://www.weather.gov/" target="_blank" rel="noopener">National Weather Service</a> point forecast. They refresh every 30 minutes.
-  Click any cam to enlarge it; where a resort publishes a live stream, the enlarged view has a "Watch live" button.
+  Lift &amp; trail status: each resort's daily report (via OpenSnow), refreshed every 30 minutes by a GitHub Action into <code>conditions.json</code>.
+  Swipe (or use the arrows) to flip through each mountain's stake, trail and base cams. Tap a cam to enlarge it; where a resort publishes a live stream, the enlarged view has a "Watch live" button.
 </footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true">
   <div class="lb-top">
     <h3 id="lb-title"></h3>
+    <span class="lb-count" id="lb-count"></span>
     <span class="spacer"></span>
     <button class="x" id="lb-live" hidden>Watch live</button>
     <a class="x" id="lb-page" target="_blank" rel="noopener">Resort cam page ↗</a>
@@ -262,73 +330,106 @@
    ============================================================ */
 const OS = id => `https://cams.opensnow.com/latest/${id}/720.webp`;
 
+/* kind: "stake" = snow stake, "trail" = on-mountain / trail view, "base" = base area */
+const C = (kind, label, img, live) => ({ kind, label, img: Array.isArray(img) ? img : [img], live });
+
 const RESORTS = [
   { id:"abasin", name:"Arapahoe Basin", region:"I-70 / Summit", order:1,
     lat:39.640, lon:-105.871, elev_m:3505, elev_ft:11500,
-    cams:[{ label:"Snow stake · cleared 5am", img:[OS(2017)],
-            live:"https://watch.hdrelay.io/player.html?cam=cam_arapahoe_basin_snow_stake_camera_1790623452872&profile=p_mvzp4drp1xbs&sig=e53f81ff16dac0f585807658&exp=1951331065664&dom=" }],
+    cams:[C("stake","Snow stake · cleared 5am", OS(2017),
+            "https://watch.hdrelay.io/player.html?cam=cam_arapahoe_basin_snow_stake_camera_1790623452872&profile=p_mvzp4drp1xbs&sig=e53f81ff16dac0f585807658&exp=1951331065664&dom="),
+          C("trail","Montezuma Bowl · 12,450 ft", OS(3132)),
+          C("base","Base · Pali & Molly Hogan", OS(3133)),
+          C("base","Mountain Goat Plaza", OS(527))],
     camPage:"https://arapahoebasin.com/mountain-cams",
     report:"https://opensnow.com/location/arapahoebasin/snow-report",
     site:"https://www.arapahoebasin.com/" },
 
   { id:"copper", name:"Copper Mountain", region:"I-70 / Summit", order:2,
     lat:39.488, lon:-106.160, elev_m:3429, elev_ft:11250,
-    cams:[{ label:"Snow stake · cleared 4am",
-            img:[OS(1960), "https://img.hdrelay.com/frames/fb469125-f1f3-459f-aeb4-98cb674e395f/default/last.jpg"] }],
+    cams:[C("stake","Snow stake · cleared 4am",
+            [OS(1960), "https://img.hdrelay.com/frames/fb469125-f1f3-459f-aeb4-98cb674e395f/default/last.jpg"]),
+          C("trail","Union Peak · 12,300 ft", OS(3164)),
+          C("trail","Excelerator · 12,050 ft", OS(2260)),
+          C("trail","Aerie · 11,200 ft", OS(3925)),
+          C("trail","Woodward terrain park", OS(2034)),
+          C("base","Center Village", OS(1954)),
+          C("base","Super Bee base", OS(1953))],
     camPage:"https://www.coppercolorado.com/the-mountain/conditions-weather/mountain-cams",
     report:"https://opensnow.com/location/copper/snow-report",
     site:"https://www.coppercolorado.com/" },
 
   { id:"winterpark", name:"Winter Park", region:"Front Range", order:3,
     lat:39.862, lon:-105.786, elev_m:3353, elev_ft:11000,
-    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(2506)],
-            live:"https://camstreamer.com/embed/mXhcYGDptt4PPiSEJVwxPNmUZjj1CNAjSkrBdj3s" }],
+    cams:[C("stake","Snow stake · cleared 4pm", OS(2506), "https://camstreamer.com/embed/mXhcYGDptt4PPiSEJVwxPNmUZjj1CNAjSkrBdj3s"),
+          C("trail","Lunch Rock · 10,650 ft", OS(2872)),
+          C("trail","Snoasis · 9,500 ft", OS(2871)),
+          C("trail","Mary Jane looking west", OS(2935)),
+          C("trail","Mary Jane looking east", OS(2936)),
+          C("base","Base area", OS(2507))],
     camPage:"https://winterparkresort.com/the-mountain/mountain-cams",
     report:"https://opensnow.com/location/winterpark/snow-report",
     site:"https://www.winterparkresort.com/" },
 
   { id:"eldora", name:"Eldora", region:"Front Range", order:4,
     lat:39.937, lon:-105.590, elev_m:3139, elev_ft:10300,
-    cams:[{ label:"Snow stake · cleared 4:30pm",
-            img:[OS(2391), "https://b14.hdrelay.com/camera/b7ceb08f-5cbb-42f1-9a9f-920f2ac5c4dc/snapshot"] }],
-    camPage:"https://www.eldora.com/the-mountain/webcams/snow-stake-cam/",
+    cams:[C("stake","Snow stake · cleared 4:30pm",
+            [OS(2391), "https://b14.hdrelay.com/camera/b7ceb08f-5cbb-42f1-9a9f-920f2ac5c4dc/snapshot"]),
+          C("trail","Alpenglow", OS(2022)),
+          C("trail","Lower mountain", OS(3937))],
+    camPage:"https://www.eldora.com/the-mountain/current-conditions/webcams/",
     report:"https://opensnow.com/location/eldora/snow-report",
     site:"https://www.eldora.com/" },
 
   { id:"steamboat", name:"Steamboat", region:"Northern", order:5,
     lat:40.460, lon:-106.790, elev_m:2758, elev_ft:9050,
-    cams:[{ label:"Mid-mtn stake · cleared 5am", img:[OS(2780)] },
-          { label:"Summit stake · cleared 4pm", img:[OS(3402)] }],
+    cams:[C("stake","Mid-mtn stake · cleared 5am", OS(2780)),
+          C("stake","Summit stake · cleared 4pm", OS(3402)),
+          C("trail","Four Points · 9,700 ft", OS(3588)),
+          C("base","Gondola Square", OS(2609)),
+          C("base","Gondola", OS(3403)),
+          C("base","Christie Peak & Wild Blue Gondola", OS(3914))],
     camPage:"https://www.steamboat.com/the-mountain/mountain-cams",
     report:"https://opensnow.com/location/steamboat/snow-report",
     site:"https://www.steamboat.com/" },
 
   { id:"aspenmtn", name:"Aspen Mountain", region:"Aspen Snowmass", order:6,
     lat:39.168, lon:-106.817, elev_m:3414, elev_ft:11200,
-    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(2698)] }],
+    cams:[C("stake","Snow stake · cleared 4pm", OS(2698)),
+          C("trail","Summit Sundeck · 11,200 ft", OS(2877)),
+          C("base","Gondola base", OS(3020))],
     camPage:"https://www.aspensnowmass.com/four-mountains/aspen-mountain/mountain-cams/aspen-mountain-snow-stake",
     report:"https://www.aspensnowmass.com/our-mountains/aspen-mountain/snow-and-grooming-report",
     site:"https://www.aspensnowmass.com/" },
 
   { id:"highlands", name:"Aspen Highlands", region:"Aspen Snowmass", order:7,
     lat:39.172, lon:-106.855, elev_m:3048, elev_ft:10000,
-    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(2736)] }],
+    cams:[C("stake","Snow stake · cleared 4pm", OS(2736)),
+          C("trail","Highland Bowl", OS(4616)),
+          C("trail","Loge Peak · 11,600 ft", OS(2577)),
+          C("trail","Maroon Bells view", OS(4617)),
+          C("base","Base", OS(3021))],
     camPage:"https://www.aspensnowmass.com/four-mountains/aspen-highlands/mountain-cams/highlands-snow-stake",
     report:"https://www.aspensnowmass.com/our-mountains/aspen-highlands/snow-and-grooming-report",
     site:"https://www.aspensnowmass.com/" },
 
   { id:"buttermilk", name:"Buttermilk", region:"Aspen Snowmass", order:8,
     lat:39.195, lon:-106.873, elev_m:2987, elev_ft:9800,
-    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(3029)],
-            live:"https://g1.ipcamlive.com/player/player.php?alias=613a4e47724d8&skin=white&autoplay=1" }],
+    cams:[C("stake","Snow stake · cleared 4pm", OS(3029),
+            "https://g1.ipcamlive.com/player/player.php?alias=613a4e47724d8&skin=white&autoplay=1"),
+          C("trail","Summit view south", OS(2581)),
+          C("base","Base", OS(3019))],
     camPage:"https://www.aspensnowmass.com/four-mountains/buttermilk/mountain-cams/buttermilk-snow-stake",
     report:"https://www.aspensnowmass.com/our-mountains/buttermilk/snow-and-grooming-report",
     site:"https://www.aspensnowmass.com/" },
 
   { id:"snowmass", name:"Snowmass", region:"Aspen Snowmass", order:9,
     lat:39.188, lon:-106.962, elev_m:3231, elev_ft:10600,
-    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(2697)],
-            live:"https://g1.ipcamlive.com/player/player.php?alias=5c6d8ba5a8388&skin=white&autoplay=1" }],
+    cams:[C("stake","Snow stake · cleared 4pm", OS(2697),
+            "https://g1.ipcamlive.com/player/player.php?alias=5c6d8ba5a8388&skin=white&autoplay=1"),
+          C("trail","Elk Camp · 11,350 ft", OS(2461)),
+          C("trail","Sam's Knob · 10,600 ft", OS(1253)),
+          C("base","Base", OS(3022))],
     camPage:"https://www.aspensnowmass.com/our-mountains/snowmass/mountain-cams/snow-stake-time-lapse",
     report:"https://www.aspensnowmass.com/our-mountains/snowmass/snow-and-grooming-report",
     site:"https://www.aspensnowmass.com/" },
@@ -338,7 +439,7 @@ const CAM_REFRESH_MS = 5 * 60 * 1000;
 const WX_REFRESH_MS  = 30 * 60 * 1000;
 
 /* ---------------- state ---------------- */
-const state = { wx:{}, nws:{}, sort:"region" };
+const state = { wx:{}, nws:{}, trail:undefined, sort:"region" };
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmtIn = v => v == null ? "–" : (v < 0.05 ? "0" : v < 10 ? v.toFixed(1) : Math.round(v).toString());
@@ -350,15 +451,23 @@ const WMO = {0:"Clear",1:"Mostly clear",2:"Partly cloudy",3:"Overcast",45:"Fog",
   85:"Snow showers",86:"Heavy snow showers",95:"Thunderstorm",96:"T-storm w/ hail",99:"T-storm w/ hail"};
 
 /* ---------------- render ---------------- */
+const KIND = { stake:"Snow stake", trail:"Trail cam", base:"Base area" };
+
 function cardHTML(r){
-  const two = r.cams.length > 1 ? " two" : "";
+  const n = r.cams.length;
   const cams = r.cams.map((c,i)=>`
-    <div class="cam" data-r="${r.id}" data-c="${i}">
-      <img alt="${esc(r.name)} ${esc(c.label)}" data-src-idx="0" loading="lazy">
+    <div class="cam" data-r="${r.id}" data-c="${i}" role="group" aria-roledescription="slide" aria-label="${i+1} of ${n}: ${esc(c.label)}">
+      <img alt="${esc(r.name)} ${esc(c.label)}" data-src-idx="0" ${i ? 'loading="lazy"' : ''} draggable="false">
+      <span class="kind ${c.kind}">${KIND[c.kind] || c.kind}</span>
       ${c.live ? '<span class="live">LIVE</span>' : ''}
       <span class="lbl">${esc(c.label)}</span>
       <div class="err">Cam image unavailable right now.<br><a href="${r.camPage}" target="_blank" rel="noopener">Open the resort's cam page ↗</a></div>
     </div>`).join("");
+  const nav = n > 1 ? `
+      <button class="nav prev" aria-label="Previous cam" disabled>‹</button>
+      <button class="nav next" aria-label="Next cam">›</button>
+      <div class="pager">${r.cams.map((c,i)=>`<button aria-label="${esc(c.label)}" data-go="${i}" ${i?'':'aria-current="true"'}></button>`).join("")}</div>
+      <span class="count">1 / ${n}</span>` : "";
   return `
   <article class="card" id="card-${r.id}">
     <div class="card-h">
@@ -371,7 +480,10 @@ function cardHTML(r){
         <div class="cond" data-f="cond">&nbsp;</div>
       </div>
     </div>
-    <div class="cams${two}">${cams}</div>
+    <div class="cams" aria-roledescription="carousel" aria-label="${esc(r.name)} cams">
+      <div class="track" tabindex="0">${cams}</div>${nav}
+    </div>
+    <div class="trail" data-f="trail"><span class="na skeleton">Loading lift &amp; trail report…</span></div>
     <div class="stats">
       <div class="stat"><div class="k">Last 24h</div><div class="v" data-f="past"><span class="skeleton">0.0</span></div></div>
       <div class="stat"><div class="k">Next 24h</div><div class="v" data-f="n24"><span class="skeleton">0.0</span></div></div>
@@ -393,12 +505,132 @@ function renderGrid(){
   const list = sortedResorts();
   $("#grid").innerHTML = list.map(cardHTML).join("");
   document.querySelectorAll(".cam").forEach(el => {
-    const r = RESORTS.find(x=>x.id===el.dataset.r), c = r.cams[+el.dataset.c];
-    loadCam(el, c, false);
-    el.addEventListener("click", e => { if(e.target.closest("a")) return; openLightbox(r, c, el.querySelector("img").src); });
+    const r = RESORTS.find(x=>x.id===el.dataset.r), i = +el.dataset.c;
+    loadCam(el, r.cams[i], false);
+    el.addEventListener("click", e => {
+      if(e.target.closest("a")) return;
+      if(el.closest(".track")?.dataset.dragged === "1") return;   // it was a mouse drag, not a click
+      openLightbox(r, i);
+    });
   });
-  list.forEach(r => { paintWx(r); paintNws(r); });
+  document.querySelectorAll(".card").forEach(initCarousel);
+  list.forEach(r => { paintWx(r); paintNws(r); paintTrail(r); });
   renderBoard();
+}
+
+/* ---------------- carousel ----------------
+   Native horizontal scroll + scroll-snap gives touch swipe for free;
+   arrows, dots, keyboard and mouse-drag are layered on top. */
+function initCarousel(card){
+  const track = card.querySelector(".track");
+  if(!track) return;
+  const slides = [...track.children], n = slides.length;
+  const prev = card.querySelector(".nav.prev"), next = card.querySelector(".nav.next");
+  const dots = [...card.querySelectorAll(".pager button")], count = card.querySelector(".count");
+  const cur = () => Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+  const go = i => { i = Math.max(0, Math.min(n-1, i)); track.scrollTo({left: i * track.clientWidth, behavior:"smooth"}); };
+  card.goToCam = go;
+  const sync = () => {
+    const i = cur();
+    dots.forEach((d,j)=>{ if(j===i) d.setAttribute("aria-current","true"); else d.removeAttribute("aria-current"); });
+    if(count) count.textContent = `${i+1} / ${n}`;
+    if(prev) prev.disabled = i === 0;
+    if(next) next.disabled = i === n-1;
+    const img = slides[i]?.querySelector("img");                    // make sure the visible cam has loaded
+    if(img && !img.getAttribute("src")) img.loading = "eager";
+  };
+  let t; track.addEventListener("scroll", () => { clearTimeout(t); t = setTimeout(sync, 60); }, {passive:true});
+  prev?.addEventListener("click", e => { e.stopPropagation(); go(cur()-1); });
+  next?.addEventListener("click", e => { e.stopPropagation(); go(cur()+1); });
+  dots.forEach(d => d.addEventListener("click", e => { e.stopPropagation(); go(+d.dataset.go); }));
+  track.addEventListener("keydown", e => {
+    if(e.key === "ArrowRight"){ e.preventDefault(); go(cur()+1); }
+    if(e.key === "ArrowLeft"){ e.preventDefault(); go(cur()-1); }
+  });
+  // mouse drag-to-swipe on desktop (touch already swipes natively)
+  let down = null;
+  track.addEventListener("pointerdown", e => {
+    if(e.pointerType !== "mouse" || e.button !== 0) return;
+    down = { x:e.clientX, left:track.scrollLeft, moved:false };
+    track.dataset.dragged = "0";
+  });
+  window.addEventListener("pointermove", e => {
+    if(!down) return;
+    const dx = e.clientX - down.x;
+    if(Math.abs(dx) > 6 && !down.moved){ down.moved = true; track.style.scrollSnapType = "none"; track.style.scrollBehavior = "auto"; }
+    if(down.moved) track.scrollLeft = down.left - dx;
+  });
+  window.addEventListener("pointerup", e => {
+    if(!down) return;
+    const d = down; down = null;
+    if(!d.moved) return;
+    track.dataset.dragged = "1"; setTimeout(()=>track.dataset.dragged = "0", 50);
+    track.style.scrollSnapType = ""; track.style.scrollBehavior = "";
+    const dx = e.clientX - d.x, start = Math.round(d.left / track.clientWidth);
+    go(Math.abs(dx) > track.clientWidth * 0.15 ? start + (dx < 0 ? 1 : -1) : start);
+  });
+  sync();
+}
+
+/* Jump a card's carousel to the first cam of a given kind */
+function jumpToKind(id, kind){
+  const r = RESORTS.find(x=>x.id===id), card = document.getElementById("card-"+id);
+  const i = r.cams.findIndex(c=>c.kind===kind);
+  if(i >= 0 && card?.goToCam) card.goToCam(i);
+}
+
+/* ---------------- trail conditions ---------------- */
+const fmtN = v => v == null ? "–" : Number(v).toLocaleString();
+function paintTrail(r){
+  const card = document.getElementById("card-"+r.id);
+  if(!card) return;
+  const t = state.trail?.[r.id];
+  const statusUrl = t?.terrain_url || r.report;
+  const counts = r.cams.reduce((a,c)=>(a[c.kind]=(a[c.kind]||0)+1,a),{});
+  const jumps = ["stake","trail","base"].filter(k=>counts[k]).map(k =>
+    `<button class="jump${k==="trail"?" trailcams":""}" data-jump-kind="${k}">${k==="stake"?"Stake":k==="trail"?"Trails":"Base"} ${counts[k]}</button>`).join("");
+  if(state.trail === undefined) return;   // still loading
+  if(!t){
+    setField(card,"trail", `<div class="trail-h"><span class="k">Lifts &amp; trails</span></div>
+      <div class="na">Lift &amp; trail report unavailable right now. <a href="${esc(statusUrl)}" target="_blank" rel="noopener">Resort trail status ↗</a></div>
+      <div class="trail-f"><span class="surf">Cams:</span>${jumps}</div>`);
+    return;
+  }
+  const status = t.detail || t.status || "–";
+  const cls = /^open/i.test(t.status||"") ? "open" : /opening/i.test(t.status||"") ? "soon" : "closed";
+  const when = t.reported_at ? new Date(t.reported_at) : null;
+  const ageH = when ? (Date.now() - when) / 36e5 : null;
+  const whenTxt = when ? "Report " + (ageH < 20
+      ? when.toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})
+      : when.toLocaleDateString([], {month:"short", day:"numeric"})) + (ageH > 36 ? " · stale" : "") : "";
+  const metric = (label, open, total) => {
+    const pct = open != null && total ? Math.min(100, Math.round(open/total*100)) : 0;
+    return `<div class="tm"><div class="n">${fmtN(open ?? (total ? 0 : null))}<small> / ${fmtN(total)}</small></div>
+      <div class="l">${label}</div><div class="meter"><i style="width:${pct}%"></i></div></div>`;
+  };
+  setField(card,"trail", `
+    <div class="trail-h"><span class="k">Lifts &amp; trails</span><span class="pill ${cls}">${esc(status)}</span><span class="when">${esc(whenTxt)}</span></div>
+    <div class="tgrid">
+      ${metric("Lifts open", t.lifts_open, t.lifts_total)}
+      ${metric("Runs open", t.runs_open, t.runs_total)}
+      ${t.acres_total ? metric("Acres open", t.acres_open, t.acres_total)
+                      : `<div class="tm"><div class="n">${t.percent_open!=null?Math.round(t.percent_open*100)+"%":"–"}</div><div class="l">Terrain open</div><div class="meter"><i style="width:${Math.round((t.percent_open||0)*100)}%"></i></div></div>`}
+    </div>
+    <div class="trail-f"><span class="surf">${t.surface ? "Surface: " + esc(t.surface) : "Cams:"}</span>${jumps}</div>
+    ${t.notes ? `<details><summary>Resort notes ▾</summary><p>${esc(t.notes)}</p></details>` : ""}
+    <div style="font-size:11.5px"><a href="${esc(statusUrl)}" target="_blank" rel="noopener">Full lift &amp; trail status ↗</a></div>`);
+}
+
+async function fetchTrail(){
+  try{
+    const res = await fetch("conditions.json?t=" + Date.now(), {cache:"no-store"});
+    if(!res.ok) throw new Error(res.status);
+    state.trail = (await res.json()).resorts || {};
+  }catch(e){
+    console.info("Trail conditions unavailable right now; will retry on the next refresh.");
+    if(!state.trail) state.trail = {};
+  }
+  RESORTS.forEach(paintTrail);
 }
 
 function loadCam(el, cam, bust){
@@ -585,35 +817,63 @@ async function fetchAllNws(){
 async function refreshAll(){
   $("#status").textContent = "updating…";
   refreshCams();
-  await Promise.all([fetchWeather(), fetchAllNws()]);
+  await Promise.all([fetchWeather(), fetchAllNws(), fetchTrail()]);
   $("#status").textContent = "updated " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
 }
 
 /* ---------------- lightbox ---------------- */
-let lbCam = null, lbResort = null;
-function openLightbox(r, c, src){
-  lbCam = c; lbResort = r;
+let lbResort = null, lbIdx = 0;
+function lbImg(){
+  const el = document.querySelector(`#card-${lbResort.id} .cam[data-c="${lbIdx}"] img`);
+  return el?.getAttribute("src") || lbResort.cams[lbIdx].img[0];
+}
+function showLb(){
+  const r = lbResort, c = r.cams[lbIdx], n = r.cams.length;
   $("#lb-title").textContent = `${r.name} · ${c.label}`;
+  $("#lb-count").textContent = n > 1 ? `${lbIdx+1} / ${n} · ${KIND[c.kind]||""}` : "";
   $("#lb-page").href = r.camPage;
   $("#lb-live").hidden = !c.live;
   $("#lb-live").textContent = "Watch live";
-  $("#lb-body").innerHTML = `<img src="${esc(src)}" alt="">`;
+  $("#lb-body").innerHTML = `<img src="${esc(lbImg())}" alt="">` + (n > 1
+    ? `<button class="lb-nav prev" aria-label="Previous cam">‹</button><button class="lb-nav next" aria-label="Next cam">›</button>` : "");
+}
+function lbStep(d){
+  if(!lbResort) return;
+  const n = lbResort.cams.length;
+  lbIdx = (lbIdx + d + n) % n;
+  showLb();
+  document.getElementById("card-"+lbResort.id)?.goToCam?.(lbIdx);   // keep the card in sync
+}
+function openLightbox(r, i){
+  lbResort = r; lbIdx = i;
+  showLb();
   $("#lb").classList.add("open");
 }
-function closeLightbox(){ $("#lb").classList.remove("open"); $("#lb-body").innerHTML = ""; }
+function closeLightbox(){ $("#lb").classList.remove("open"); $("#lb-body").innerHTML = ""; lbResort = null; }
 $("#lb-close").onclick = closeLightbox;
-$("#lb").addEventListener("click", e => { if(e.target.id==="lb" || e.target.id==="lb-body") closeLightbox(); });
-document.addEventListener("keydown", e => { if(e.key==="Escape") closeLightbox(); });
+$("#lb").addEventListener("click", e => {
+  if(e.target.closest(".lb-nav")){ lbStep(e.target.closest(".lb-nav").classList.contains("next") ? 1 : -1); return; }
+  if(e.target.id==="lb" || e.target.id==="lb-body") closeLightbox();
+});
+document.addEventListener("keydown", e => {
+  if(!$("#lb").classList.contains("open")) return;
+  if(e.key==="Escape") closeLightbox();
+  if(e.key==="ArrowRight" && !$("#lb-body iframe")) lbStep(1);
+  if(e.key==="ArrowLeft" && !$("#lb-body iframe")) lbStep(-1);
+});
+// swipe left/right in the enlarged view
+let lbTouch = null;
+$("#lb-body").addEventListener("touchstart", e => { if(e.touches.length===1) lbTouch = {x:e.touches[0].clientX, y:e.touches[0].clientY}; }, {passive:true});
+$("#lb-body").addEventListener("touchend", e => {
+  if(!lbTouch || $("#lb-body iframe")) return;
+  const dx = e.changedTouches[0].clientX - lbTouch.x, dy = e.changedTouches[0].clientY - lbTouch.y;
+  lbTouch = null;
+  if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) lbStep(dx < 0 ? 1 : -1);
+}, {passive:true});
 $("#lb-live").onclick = () => {
-  const showingLive = $("#lb-body iframe");
-  if(showingLive){
-    const img = document.querySelector(`.cam[data-r="${lbResort.id}"] img`);
-    $("#lb-body").innerHTML = `<img src="${esc(img?.src||"")}" alt="">`;
-    $("#lb-live").textContent = "Watch live";
-  } else {
-    $("#lb-body").innerHTML = `<iframe src="${esc(lbCam.live)}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
-    $("#lb-live").textContent = "Show still image";
-  }
+  if($("#lb-body iframe")){ showLb(); return; }
+  $("#lb-body").innerHTML = `<iframe src="${esc(lbResort.cams[lbIdx].live)}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+  $("#lb-live").textContent = "Show still image";
 };
 
 /* ---------------- controls ---------------- */
@@ -633,6 +893,10 @@ $("#board").addEventListener("click", e => {
   card.scrollIntoView({behavior:"smooth", block:"start"});
   card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash");
 });
+$("#grid").addEventListener("click", e => {
+  const b = e.target.closest("[data-jump-kind]"); if(!b) return;
+  jumpToKind(b.closest(".card").id.slice(5), b.dataset.jumpKind);
+});
 $("#refresh").onclick = refreshAll;
 
 try{ const s = localStorage.getItem("ikon-size"); if(s){ document.querySelector(`button[data-size="${s}"]`)?.click(); } }catch(e){}
@@ -641,7 +905,7 @@ try{ const s = localStorage.getItem("ikon-size"); if(s){ document.querySelector(
 renderGrid();
 refreshAll();
 setInterval(refreshCams, CAM_REFRESH_MS);
-setInterval(() => { fetchWeather(); fetchAllNws(); $("#status").textContent = "updated " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"}); }, WX_REFRESH_MS);
+setInterval(() => { fetchWeather(); fetchAllNws(); fetchTrail(); $("#status").textContent = "updated " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"}); }, WX_REFRESH_MS);
 </script>
 </body>
 </html>

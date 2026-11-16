@@ -1,0 +1,79 @@
+{
+  "resorts": {
+    "abasin": {
+      "status": "Open", "detail": "Open (1%)",
+      "lifts_open": 1, "lifts_total": 9, "runs_open": 1, "runs_total": 145,
+      "acres_open": null, "acres_total": null, "percent_open": 0.01,
+      "surface": "Machine Groomed", "notes": null,
+      "reported_at": "2026-11-16T14:19:00Z",
+      "terrain_url": "https://www.arapahoebasin.com/snow-report/#terrainAndLiftStatus"
+    },
+    "copper": {
+      "status": "Open", "detail": "Open (2%)",
+      "lifts_open": 1, "lifts_total": 23, "runs_open": 3, "runs_total": 162,
+      "acres_open": 50, "acres_total": 2538, "percent_open": 0.02,
+      "surface": null,
+      "notes": "Good Morning and welcome back to another week at Copper Mountain! We've got some sun ahead of us today with a high near 50° and calm winds.Crews have been working around the clock getting more of the mountain prepped while we wait for snow, So be sure to thank a snowmaker for making this early season possible! In the meantime please be respectful of all closures, be mindful of your speed and remember that the season is just getting started. We'll see you out there!",
+      "reported_at": "2026-11-16T12:00:00Z",
+      "terrain_url": "https://www.coppercolorado.com/the-mountain/trail-lift-info/winter-trail-report"
+    },
+    "winterpark": {
+      "status": "Open", "detail": "Open (1%)",
+      "lifts_open": 4, "lifts_total": 24, "runs_open": 4, "runs_total": 171,
+      "acres_open": 21, "acres_total": 3081, "percent_open": 0.01,
+      "surface": "Machine Made", "notes": null,
+      "reported_at": "2026-11-16T13:44:32Z",
+      "terrain_url": "https://www.winterparkresort.com/the-mountain/mountain-report#lift-and-trail-status"
+    },
+    "eldora": {
+      "status": "Closed", "detail": "Closed",
+      "lifts_open": null, "lifts_total": 10, "runs_open": null, "runs_total": 63,
+      "acres_open": null, "acres_total": null, "percent_open": null,
+      "surface": null, "notes": null,
+      "reported_at": "2026-11-16T14:17:09Z",
+      "terrain_url": "https://www.eldora.com/the-mountain/current-conditions/trail-lift-status/"
+    },
+    "steamboat": {
+      "status": "Opening Nov 21", "detail": "Opening Nov 21",
+      "lifts_open": null, "lifts_total": 23, "runs_open": null, "runs_total": 184,
+      "acres_open": null, "acres_total": null, "percent_open": null,
+      "surface": null, "notes": null,
+      "reported_at": "2026-11-16T13:40:09Z",
+      "terrain_url": "https://www.steamboat.com/the-mountain/mountain-report"
+    },
+    "aspenmtn": {
+      "status": "Opening Nov 26", "detail": "Opening Nov 26",
+      "lifts_open": null, "lifts_total": 6, "runs_open": null, "runs_total": 115,
+      "acres_open": null, "acres_total": null, "percent_open": null,
+      "surface": null, "notes": null,
+      "reported_at": "2026-11-16T12:45:00Z",
+      "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
+    },
+    "highlands": {
+      "status": "Opening Dec 12", "detail": "Opening Dec 12",
+      "lifts_open": null, "lifts_total": 5, "runs_open": null, "runs_total": 117,
+      "acres_open": null, "acres_total": null, "percent_open": null,
+      "surface": null, "notes": null,
+      "reported_at": "2026-11-16T12:54:00Z",
+      "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
+    },
+    "buttermilk": {
+      "status": "Opening Dec 12", "detail": "Opening Dec 12",
+      "lifts_open": null, "lifts_total": 5, "runs_open": null, "runs_total": 44,
+      "acres_open": null, "acres_total": null, "percent_open": null,
+      "surface": null, "notes": null,
+      "reported_at": "2026-11-16T12:53:00Z",
+      "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
+    },
+    "snowmass": {
+      "status": "Opening Nov 26", "detail": "Opening Nov 26",
+      "lifts_open": null, "lifts_total": 20, "runs_open": null, "runs_total": 98,
+      "acres_open": null, "acres_total": null, "percent_open": null,
+      "surface": null, "notes": null,
+      "reported_at": "2026-11-16T12:55:00Z",
+      "terrain_url": null
+    }
+  },
+  "updated": "2026-11-16T15:10:00Z",
+  "source": "OpenSnow resort reports"
+}
