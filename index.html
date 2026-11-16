@@ -322,10 +322,10 @@
   .ground{position:relative;height:150px;overflow:hidden;margin-top:-10px}
   footer{color:var(--navy);font-weight:700}
   @media (max-width:720px){
-    header{height:430px} .bar{padding:22px 18px 0;gap:14px} .lift{--cable:282px} .sun{width:70px;height:70px;top:16px;right:3%}
-    h1{font-size:clamp(28px,8.4vw,36px);line-height:1.08;letter-spacing:.3px;gap:10px;align-items:flex-start;max-width:calc(100% - 84px);
+    header{height:430px} .bar{padding:22px 18px 0;gap:14px} .lift{--cable:282px} .sun{width:48px;height:48px;top:4px;right:3%}
+    h1{font-size:min(34px,8.6vw);line-height:1.08;letter-spacing:.2px;
        -webkit-text-stroke:4.4px var(--navy);filter:drop-shadow(0 3px 0 #fff) drop-shadow(0 2px 0 var(--navy))}
-    h1 .flake-badge{width:30px;height:30px;padding:4px;border-width:2.5px;margin-top:4px}
+    h1 .flake-badge{display:none} h1 .t2{display:block;white-space:nowrap}
     .controls{gap:10px} .controls .seg:nth-child(2){display:none}
     .board{padding:16px 18px 4px} main{padding:54px 18px 40px}
     .pine.far{display:none} .cloud.c1,.cloud.c2{display:none} .cloud.c3{top:248px!important;left:58%!important}
@@ -341,7 +341,7 @@
   <div class="bar">
     <h1>
       <svg class="flake-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M4.2 6.5l15.6 11M4.2 17.5l15.6-11M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5"/></svg>
-      Colorado Ikon Mountain Conditions
+      <span class="t">Colorado Ikon <span class="t2">Mountain Conditions</span></span>
     </h1>
     <span class="sub">Bluebird Report · 9 mountains · live cams · lifts &amp; trails · forecast</span>
     <span class="spacer"></span>
