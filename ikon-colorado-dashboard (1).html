@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colorado Ikon Snow Stakes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1016; --panel:#121a23; --panel2:#18222d; --line:#223040;
+    --text:#e9f0f6; --muted:#8a9bab; --dim:#5d6e7e;
+    --ice:#7cc7ff; --ice-strong:#3aa9ff; --snow:#ffffff; --warn:#ffb454; --good:#7ee2b8;
+    --radius:14px;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans:"Inter Tight", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:var(--ice);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  header{position:sticky;top:0;z-index:20;background:rgba(11,16,22,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{max-width:1800px;margin:0 auto;padding:14px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  h1{font-size:18px;font-weight:700;letter-spacing:.2px;margin:0;display:flex;align-items:center;gap:10px}
+  h1 .flake{width:22px;height:22px;color:var(--ice)}
+  .sub{color:var(--muted);font-size:13px}
+  .spacer{flex:1}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .seg{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:3px}
+  .seg button{all:unset;cursor:pointer;font-size:12.5px;padding:6px 10px;border-radius:7px;color:var(--muted);font-weight:500}
+  .seg button[aria-pressed="true"]{background:var(--panel2);color:var(--text)}
+  .btn{all:unset;cursor:pointer;font-size:12.5px;font-weight:600;padding:8px 12px;border-radius:10px;background:var(--ice-strong);color:#04121f}
+  .btn:hover{filter:brightness(1.08)}
+  .status{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+
+  /* Leaderboard strip */
+  .board{max-width:1800px;margin:0 auto;padding:14px 20px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin}
+  .chip{flex:0 0 auto;display:flex;align-items:baseline;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12.5px;cursor:pointer;color:var(--muted)}
+  .chip b{color:var(--text);font-weight:600}
+  .chip .n{font-family:var(--mono);color:var(--ice);font-weight:600}
+  .chip.top{border-color:var(--ice-strong);box-shadow:0 0 0 1px var(--ice-strong) inset}
+
+  main{max-width:1800px;margin:0 auto;padding:16px 20px 40px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(var(--card-min,380px),1fr))}
+  body[data-size="lg"] main{--card-min:560px}
+  body[data-size="sm"] main{--card-min:300px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;scroll-margin-top:120px}
+  .card.flash{animation:flash 1.2s ease}
+  @keyframes flash{0%{box-shadow:0 0 0 2px var(--ice-strong)}100%{box-shadow:0 0 0 0 transparent}}
+  .card-h{display:flex;align-items:flex-start;gap:10px;padding:12px 14px 10px}
+  .card-h h2{margin:0;font-size:16px;font-weight:700;line-height:1.2}
+  .card-h .meta{font-size:12px;color:var(--muted);margin-top:3px}
+  .card-h .now{margin-left:auto;text-align:right;white-space:nowrap}
+  .card-h .temp{font-family:var(--mono);font-size:22px;font-weight:600;line-height:1}
+  .card-h .cond{font-size:11.5px;color:var(--muted);margin-top:4px}
+
+  .cams{display:grid;gap:2px;background:#000}
+  .cams.two{grid-template-columns:1fr 1fr}
+  .cam{position:relative;aspect-ratio:4/3;background:#06090d;cursor:zoom-in;overflow:hidden}
+  .cam img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .3s}
+  .cam .lbl{position:absolute;left:8px;bottom:8px;font-size:11px;font-weight:600;background:rgba(0,0,0,.6);padding:3px 7px;border-radius:6px;backdrop-filter:blur(4px)}
+  .cam .live{position:absolute;right:8px;top:8px;font-size:10.5px;font-weight:700;letter-spacing:.4px;background:#e5484d;color:#fff;padding:3px 6px;border-radius:5px}
+  .cam .err{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--muted);font-size:12.5px;line-height:1.5}
+  .cam.failed img{opacity:0}
+  .cam.failed .err{display:flex}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+  .stat{padding:10px 12px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--dim);font-weight:600}
+  .stat .v{font-family:var(--mono);font-size:18px;font-weight:600;margin-top:3px}
+  .stat .v small{font-size:11px;color:var(--muted);font-weight:400;margin-left:1px}
+  .stat .v.hot{color:var(--ice)}
+
+  .week{display:flex;gap:4px;padding:10px 12px 6px;align-items:flex-end;border-top:1px solid var(--line)}
+  .day{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;min-width:0;height:84px}
+  .day .amt{font-family:var(--mono);font-size:10px;color:var(--muted);height:12px}
+  .day .b{width:100%;max-width:26px;background:linear-gradient(180deg,var(--snow),var(--ice));border-radius:3px 3px 1px 1px;min-height:2px;opacity:.9}
+  .day .b.zero{background:var(--line)}
+  .day .d{font-size:10px;color:var(--dim);font-weight:600}
+  .day .hl{font-family:var(--mono);font-size:9.5px;color:var(--dim)}
+
+  .fc{padding:8px 14px 10px;font-size:12.5px;line-height:1.5;color:var(--muted);border-top:1px solid var(--line)}
+  .fc b{color:var(--text);font-weight:600}
+  .fc details summary{cursor:pointer;color:var(--dim);font-size:11.5px;margin-top:4px;list-style:none}
+  .fc details summary::-webkit-details-marker{display:none}
+  .fc details p{margin:6px 0 0}
+
+  .links{display:flex;gap:14px;flex-wrap:wrap;padding:10px 14px 12px;border-top:1px solid var(--line);font-size:12.5px;margin-top:auto}
+
+  .skeleton{background:linear-gradient(90deg,var(--panel2),#1f2b38,var(--panel2));background-size:200% 100%;animation:sh 1.4s infinite;border-radius:4px;color:transparent!important}
+  @keyframes sh{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+  /* Lightbox */
+  .lb{position:fixed;inset:0;z-index:50;background:rgba(3,6,9,.92);display:none;flex-direction:column}
+  .lb.open{display:flex}
+  .lb-top{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line)}
+  .lb-top h3{margin:0;font-size:15px}
+  .lb-body{flex:1;display:flex;align-items:center;justify-content:center;padding:16px;min-height:0}
+  .lb-body img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px}
+  .lb-body iframe{width:min(100%,1400px);aspect-ratio:16/9;max-height:100%;border:0;border-radius:8px;background:#000}
+  .x{all:unset;cursor:pointer;font-size:13px;padding:7px 12px;border-radius:9px;border:1px solid var(--line);color:var(--muted)}
+  .x:hover{color:var(--text)}
+
+  footer{max-width:1800px;margin:0 auto;padding:0 20px 40px;color:var(--dim);font-size:12px;line-height:1.6}
+  @media (max-width:720px){ header{position:static} .sub{display:none} }
+  @media (max-width:520px){ .stats{grid-template-columns:repeat(2,1fr)} .stat:nth-child(2){border-right:0} .stat:nth-child(-n+2){border-bottom:1px solid var(--line)} }
+</style>
+</head>
+<body data-size="md">
+
+<header>
+  <div class="bar">
+    <h1>
+      <svg class="flake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M4.2 6.5l15.6 11M4.2 17.5l15.6-11M9.5 3.5 12 6l2.5-2.5M9.5 20.5 12 18l2.5 2.5"/></svg>
+      Colorado Ikon Snow Stakes
+    </h1>
+    <span class="sub">9 mountains · live stake cams + forecast</span>
+    <span class="spacer"></span>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Sort">
+        <button data-sort="region" aria-pressed="true">By region</button>
+        <button data-sort="past">Last 24h</button>
+        <button data-sort="next">Next 72h</button>
+      </div>
+      <div class="seg" role="group" aria-label="Card size">
+        <button data-size="sm" aria-pressed="false">S</button>
+        <button data-size="md" aria-pressed="true">M</button>
+        <button data-size="lg" aria-pressed="false">L</button>
+      </div>
+      <button class="btn" id="refresh">Refresh now</button>
+      <span class="status" id="status">loading…</span>
+    </div>
+  </div>
+</header>
+
+<div class="board" id="board"></div>
+<main id="grid"></main>
+
+<footer>
+  Cam images: resort snow stake cameras (served via OpenSnow's public cam mirror, with resort feeds as fallback). They refresh every 5 minutes.
+  Weather: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> model data at each stake's elevation (snowfall totals are model estimates, not the resort's official report) and the
+  <a href="https://www.weather.gov/" target="_blank" rel="noopener">National Weather Service</a> point forecast. They refresh every 30 minutes.
+  Click any cam to enlarge it; where a resort publishes a live stream, the enlarged view has a "Watch live" button.
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <div class="lb-top">
+    <h3 id="lb-title"></h3>
+    <span class="spacer"></span>
+    <button class="x" id="lb-live" hidden>Watch live</button>
+    <a class="x" id="lb-page" target="_blank" rel="noopener">Resort cam page ↗</a>
+    <button class="x" id="lb-close">Close (Esc)</button>
+  </div>
+  <div class="lb-body" id="lb-body"></div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG: edit this list to add/remove mountains or cams.
+   - img: tried in order; if one fails to load the next is used
+   - live: optional embeddable live player (opens in the enlarged view)
+   - lat/lon/elev_m: point used for the weather (the snow stake location)
+   ============================================================ */
+const OS = id => `https://cams.opensnow.com/latest/${id}/720.webp`;
+
+const RESORTS = [
+  { id:"abasin", name:"Arapahoe Basin", region:"I-70 / Summit", order:1,
+    lat:39.640, lon:-105.871, elev_m:3505, elev_ft:11500,
+    cams:[{ label:"Snow stake · cleared 5am", img:[OS(2017)],
+            live:"https://watch.hdrelay.io/player.html?cam=cam_arapahoe_basin_snow_stake_camera_1790623452872&profile=p_mvzp4drp1xbs&sig=e53f81ff16dac0f585807658&exp=1951331065664&dom=" }],
+    camPage:"https://arapahoebasin.com/mountain-cams",
+    report:"https://opensnow.com/location/arapahoebasin/snow-report",
+    site:"https://www.arapahoebasin.com/" },
+
+  { id:"copper", name:"Copper Mountain", region:"I-70 / Summit", order:2,
+    lat:39.488, lon:-106.160, elev_m:3429, elev_ft:11250,
+    cams:[{ label:"Snow stake · cleared 4am",
+            img:[OS(1960), "https://img.hdrelay.com/frames/fb469125-f1f3-459f-aeb4-98cb674e395f/default/last.jpg"] }],
+    camPage:"https://www.coppercolorado.com/the-mountain/conditions-weather/mountain-cams",
+    report:"https://opensnow.com/location/copper/snow-report",
+    site:"https://www.coppercolorado.com/" },
+
+  { id:"winterpark", name:"Winter Park", region:"Front Range", order:3,
+    lat:39.862, lon:-105.786, elev_m:3353, elev_ft:11000,
+    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(2506)],
+            live:"https://camstreamer.com/embed/mXhcYGDptt4PPiSEJVwxPNmUZjj1CNAjSkrBdj3s" }],
+    camPage:"https://winterparkresort.com/the-mountain/mountain-cams",
+    report:"https://opensnow.com/location/winterpark/snow-report",
+    site:"https://www.winterparkresort.com/" },
+
+  { id:"eldora", name:"Eldora", region:"Front Range", order:4,
+    lat:39.937, lon:-105.590, elev_m:3139, elev_ft:10300,
+    cams:[{ label:"Snow stake · cleared 4:30pm",
+            img:[OS(2391), "https://b14.hdrelay.com/camera/b7ceb08f-5cbb-42f1-9a9f-920f2ac5c4dc/snapshot"] }],
+    camPage:"https://www.eldora.com/the-mountain/webcams/snow-stake-cam/",
+    report:"https://opensnow.com/location/eldora/snow-report",
+    site:"https://www.eldora.com/" },
+
+  { id:"steamboat", name:"Steamboat", region:"Northern", order:5,
+    lat:40.460, lon:-106.790, elev_m:2758, elev_ft:9050,
+    cams:[{ label:"Mid-mtn stake · cleared 5am", img:[OS(2780)] },
+          { label:"Summit stake · cleared 4pm", img:[OS(3402)] }],
+    camPage:"https://www.steamboat.com/the-mountain/mountain-cams",
+    report:"https://opensnow.com/location/steamboat/snow-report",
+    site:"https://www.steamboat.com/" },
+
+  { id:"aspenmtn", name:"Aspen Mountain", region:"Aspen Snowmass", order:6,
+    lat:39.168, lon:-106.817, elev_m:3414, elev_ft:11200,
+    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(2698)] }],
+    camPage:"https://www.aspensnowmass.com/four-mountains/aspen-mountain/mountain-cams/aspen-mountain-snow-stake",
+    report:"https://www.aspensnowmass.com/our-mountains/aspen-mountain/snow-and-grooming-report",
+    site:"https://www.aspensnowmass.com/" },
+
+  { id:"highlands", name:"Aspen Highlands", region:"Aspen Snowmass", order:7,
+    lat:39.172, lon:-106.855, elev_m:3048, elev_ft:10000,
+    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(2736)] }],
+    camPage:"https://www.aspensnowmass.com/four-mountains/aspen-highlands/mountain-cams/highlands-snow-stake",
+    report:"https://www.aspensnowmass.com/our-mountains/aspen-highlands/snow-and-grooming-report",
+    site:"https://www.aspensnowmass.com/" },
+
+  { id:"buttermilk", name:"Buttermilk", region:"Aspen Snowmass", order:8,
+    lat:39.195, lon:-106.873, elev_m:2987, elev_ft:9800,
+    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(3029)],
+            live:"https://g1.ipcamlive.com/player/player.php?alias=613a4e47724d8&skin=white&autoplay=1" }],
+    camPage:"https://www.aspensnowmass.com/four-mountains/buttermilk/mountain-cams/buttermilk-snow-stake",
+    report:"https://www.aspensnowmass.com/our-mountains/buttermilk/snow-and-grooming-report",
+    site:"https://www.aspensnowmass.com/" },
+
+  { id:"snowmass", name:"Snowmass", region:"Aspen Snowmass", order:9,
+    lat:39.188, lon:-106.962, elev_m:3231, elev_ft:10600,
+    cams:[{ label:"Snow stake · cleared 4pm", img:[OS(2697)],
+            live:"https://g1.ipcamlive.com/player/player.php?alias=5c6d8ba5a8388&skin=white&autoplay=1" }],
+    camPage:"https://www.aspensnowmass.com/our-mountains/snowmass/mountain-cams/snow-stake-time-lapse",
+    report:"https://www.aspensnowmass.com/our-mountains/snowmass/snow-and-grooming-report",
+    site:"https://www.aspensnowmass.com/" },
+];
+
+const CAM_REFRESH_MS = 5 * 60 * 1000;
+const WX_REFRESH_MS  = 30 * 60 * 1000;
+
+/* ---------------- state ---------------- */
+const state = { wx:{}, nws:{}, sort:"region" };
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtIn = v => v == null ? "–" : (v < 0.05 ? "0" : v < 10 ? v.toFixed(1) : Math.round(v).toString());
+
+const WMO = {0:"Clear",1:"Mostly clear",2:"Partly cloudy",3:"Overcast",45:"Fog",48:"Freezing fog",
+  51:"Light drizzle",53:"Drizzle",55:"Heavy drizzle",56:"Freezing drizzle",57:"Freezing drizzle",
+  61:"Light rain",63:"Rain",65:"Heavy rain",66:"Freezing rain",67:"Freezing rain",
+  71:"Light snow",73:"Snow",75:"Heavy snow",77:"Snow grains",80:"Rain showers",81:"Rain showers",82:"Heavy showers",
+  85:"Snow showers",86:"Heavy snow showers",95:"Thunderstorm",96:"T-storm w/ hail",99:"T-storm w/ hail"};
+
+/* ---------------- render ---------------- */
+function cardHTML(r){
+  const two = r.cams.length > 1 ? " two" : "";
+  const cams = r.cams.map((c,i)=>`
+    <div class="cam" data-r="${r.id}" data-c="${i}">
+      <img alt="${esc(r.name)} ${esc(c.label)}" data-src-idx="0" loading="lazy">
+      ${c.live ? '<span class="live">LIVE</span>' : ''}
+      <span class="lbl">${esc(c.label)}</span>
+      <div class="err">Cam image unavailable right now.<br><a href="${r.camPage}" target="_blank" rel="noopener">Open the resort's cam page ↗</a></div>
+    </div>`).join("");
+  return `
+  <article class="card" id="card-${r.id}">
+    <div class="card-h">
+      <div>
+        <h2>${esc(r.name)}</h2>
+        <div class="meta">${esc(r.region)} · stake ~${r.elev_ft.toLocaleString()} ft</div>
+      </div>
+      <div class="now">
+        <div class="temp skeleton" data-f="temp">00°</div>
+        <div class="cond" data-f="cond">&nbsp;</div>
+      </div>
+    </div>
+    <div class="cams${two}">${cams}</div>
+    <div class="stats">
+      <div class="stat"><div class="k">Last 24h</div><div class="v" data-f="past"><span class="skeleton">0.0</span></div></div>
+      <div class="stat"><div class="k">Next 24h</div><div class="v" data-f="n24"><span class="skeleton">0.0</span></div></div>
+      <div class="stat"><div class="k">Next 72h</div><div class="v" data-f="n72"><span class="skeleton">0.0</span></div></div>
+      <div class="stat"><div class="k">Wind</div><div class="v" data-f="wind"><span class="skeleton">00</span></div></div>
+    </div>
+    <div class="week" data-f="week"></div>
+    <div class="fc" data-f="fc"><span class="skeleton">Loading the National Weather Service forecast…</span></div>
+    <div class="links">
+      <a href="${r.report}" target="_blank" rel="noopener">Snow report ↗</a>
+      <a href="${r.camPage}" target="_blank" rel="noopener">All cams ↗</a>
+      <a href="https://forecast.weather.gov/MapClick.php?lat=${r.lat}&lon=${r.lon}" target="_blank" rel="noopener">NWS forecast ↗</a>
+      <a href="${r.site}" target="_blank" rel="noopener">Resort site ↗</a>
+    </div>
+  </article>`;
+}
+
+function renderGrid(){
+  const list = sortedResorts();
+  $("#grid").innerHTML = list.map(cardHTML).join("");
+  document.querySelectorAll(".cam").forEach(el => {
+    const r = RESORTS.find(x=>x.id===el.dataset.r), c = r.cams[+el.dataset.c];
+    loadCam(el, c, false);
+    el.addEventListener("click", e => { if(e.target.closest("a")) return; openLightbox(r, c, el.querySelector("img").src); });
+  });
+  list.forEach(r => { paintWx(r); paintNws(r); });
+  renderBoard();
+}
+
+function loadCam(el, cam, bust){
+  const img = el.querySelector("img");
+  let idx = 0;
+  const tryNext = () => {
+    if(idx >= cam.img.length){ el.classList.add("failed"); return; }
+    const base = cam.img[idx++];
+    img.onerror = tryNext;
+    img.onload = () => el.classList.remove("failed");
+    img.src = bust ? base + (base.includes("?")?"&":"?") + "t=" + Date.now() : base;
+  };
+  tryNext();
+}
+
+function refreshCams(){
+  document.querySelectorAll(".cam").forEach(el => {
+    const r = RESORTS.find(x=>x.id===el.dataset.r);
+    loadCam(el, r.cams[+el.dataset.c], true);
+  });
+}
+
+function setField(card, f, html, cls){
+  const el = card.querySelector(`[data-f="${f}"]`);
+  if(!el) return;
+  el.innerHTML = html;
+  el.classList.remove("skeleton");
+  if(cls !== undefined) el.className = el.className.replace(/\bhot\b/,"").trim() + (cls ? " "+cls : "");
+}
+
+function paintWx(r){
+  const card = document.getElementById("card-"+r.id), w = state.wx[r.id];
+  if(!card || !w) return;
+  if(w.error){
+    setField(card,"temp","–"); setField(card,"cond","weather unavailable");
+    ["past","n24","n72","wind"].forEach(f=>setField(card,f,"–"));
+    return;
+  }
+  setField(card,"temp", `${Math.round(w.temp)}°`);
+  setField(card,"cond", esc(WMO[w.code] || ""));
+  setField(card,"past", `${fmtIn(w.past24)}<small>"</small>`, w.past24 >= 2 ? "hot" : "");
+  setField(card,"n24",  `${fmtIn(w.next24)}<small>"</small>`, w.next24 >= 2 ? "hot" : "");
+  setField(card,"n72",  `${fmtIn(w.next72)}<small>"</small>`, w.next72 >= 4 ? "hot" : "");
+  setField(card,"wind", `${Math.round(w.wind)}<small> g${Math.round(w.gust)}</small>`);
+  const max = Math.max(4, ...w.days.map(d=>d.snow));
+  setField(card,"week", w.days.map(d=>{
+    const h = Math.round((d.snow/max)*40);
+    return `<div class="day" title="${esc(d.label)}: ${fmtIn(d.snow)}&quot; · ${Math.round(d.hi)}°/${Math.round(d.lo)}°">
+      <div class="amt">${d.snow>=0.05?fmtIn(d.snow):""}</div>
+      <div class="b ${d.snow<0.05?"zero":""}" style="height:${Math.max(2,h)}px"></div>
+      <div class="d">${esc(d.dow)}</div>
+      <div class="hl">${Math.round(d.hi)}°</div>
+    </div>`;
+  }).join(""));
+}
+
+function paintNws(r){
+  const card = document.getElementById("card-"+r.id), n = state.nws[r.id];
+  if(!card || !n) return;
+  if(n.error){ setField(card,"fc",`<span>NWS forecast unavailable right now. <a href="https://forecast.weather.gov/MapClick.php?lat=${r.lat}&lon=${r.lon}" target="_blank" rel="noopener">Open on weather.gov ↗</a></span>`); return; }
+  const p = n.periods.slice(0,2);
+  const short = p.map(x=>`<b>${esc(x.name)}:</b> ${esc(x.shortForecast)}, ${x.temperature}°${esc(x.temperatureUnit)}`).join("<br>");
+  const detail = n.periods.slice(0,4).map(x=>`<p><b>${esc(x.name)}.</b> ${esc(x.detailedForecast)}</p>`).join("");
+  const note = n.from ? `<div style="color:var(--dim);font-size:11.5px;margin-bottom:3px">NWS was unreachable for this point · showing ${esc(n.from)}'s forecast</div>` : "";
+  setField(card,"fc", `${note}${short}<details><summary>Full NWS forecast ▾</summary>${detail}</details>`);
+}
+
+function renderBoard(){
+  const have = RESORTS.filter(r=>state.wx[r.id] && !state.wx[r.id].error);
+  if(!have.length){ $("#board").innerHTML = ""; return; }
+  const key = state.sort === "past" ? "past24" : "next72";
+  const label = state.sort === "past" ? "last 24h" : "next 72h";
+  const ranked = [...have].sort((a,b)=>state.wx[b.id][key]-state.wx[a.id][key]);
+  const topVal = state.wx[ranked[0].id][key];
+  $("#board").innerHTML = `<span class="chip" style="cursor:default;border:0;background:none;padding-left:0">Model snow, ${label}:</span>` +
+    ranked.map(r=>`<span class="chip ${state.wx[r.id][key]===topVal && topVal>=0.05?"top":""}" data-jump="${r.id}"><b>${esc(r.name)}</b><span class="n">${fmtIn(state.wx[r.id][key])}"</span></span>`).join("");
+}
+
+function sortedResorts(){
+  const s = state.sort;
+  if(s === "region") return [...RESORTS].sort((a,b)=>a.order-b.order);
+  const key = s === "past" ? "past24" : "next72";
+  return [...RESORTS].sort((a,b)=>((state.wx[b.id]||{})[key]??-1)-((state.wx[a.id]||{})[key]??-1));
+}
+
+/* ---------------- data ---------------- */
+async function fetchWeather(){
+  const q = new URLSearchParams({
+    latitude: RESORTS.map(r=>r.lat).join(","),
+    longitude: RESORTS.map(r=>r.lon).join(","),
+    elevation: RESORTS.map(r=>r.elev_m).join(","),
+    current: "temperature_2m,weather_code,wind_speed_10m,wind_gusts_10m",
+    hourly: "snowfall",
+    daily: "snowfall_sum,temperature_2m_max,temperature_2m_min",
+    past_days: "1", forecast_days: "7",
+    temperature_unit: "fahrenheit", wind_speed_unit: "mph", precipitation_unit: "inch",
+    timezone: "America/Denver",
+  });
+  try{
+    const res = await fetch("https://api.open-meteo.com/v1/forecast?" + q);
+    if(!res.ok) throw new Error(res.status);
+    let data = await res.json();
+    if(!Array.isArray(data)) data = [data];
+    data.forEach((d,i)=>{
+      const r = RESORTS[i];
+      const times = d.hourly.time, snow = d.hourly.snowfall;
+      const nowHour = d.current.time.slice(0,13);
+      let idx = times.findIndex(t=>t.slice(0,13)===nowHour);
+      if(idx < 0) idx = Math.min(times.length-1, 24);
+      const sum = (a,b) => snow.slice(Math.max(0,a), Math.max(0,b)).reduce((s,v)=>s+(v||0),0);
+      const todayStr = d.current.time.slice(0,10);
+      const startDay = Math.max(0, d.daily.time.indexOf(todayStr));
+      const days = d.daily.time.slice(startDay, startDay+7).map((t,j)=>{
+        const k = startDay+j, dt = new Date(t+"T12:00:00");
+        return { label: dt.toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"}),
+                 dow: j===0 ? "Today" : dt.toLocaleDateString(undefined,{weekday:"short"}),
+                 snow: d.daily.snowfall_sum[k]||0, hi: d.daily.temperature_2m_max[k], lo: d.daily.temperature_2m_min[k] };
+      });
+      state.wx[r.id] = {
+        temp: d.current.temperature_2m, code: d.current.weather_code,
+        wind: d.current.wind_speed_10m, gust: d.current.wind_gusts_10m,
+        past24: sum(idx-23, idx+1), next24: sum(idx+1, idx+25), next72: sum(idx+1, idx+73), days,
+      };
+    });
+  }catch(e){
+    console.info("Open-Meteo weather unavailable right now; will retry on the next refresh.");
+    RESORTS.forEach(r=>{ if(!state.wx[r.id]) state.wx[r.id] = {error:true}; });
+  }
+  RESORTS.forEach(paintWx);
+  if(state.sort !== "region") renderGrid(); else renderBoard();
+}
+
+/* The NWS API often returns brief 500/503 errors (which browsers report as
+   "Failed to fetch"), so every call retries with a growing pause. */
+const sleep = ms => new Promise(res => setTimeout(res, ms));
+async function nwsJson(url, tries = 3){
+  let lastErr;
+  for(let i = 0; i < tries; i++){
+    try{
+      const res = await fetch(url, {headers:{Accept:"application/geo+json"}, cache:"no-store"});
+      if(res.ok) return await res.json();
+      lastErr = new Error(res.status);
+    }catch(e){ lastErr = e; }
+    if(i < tries - 1) await sleep(1000 * (i + 1) + Math.random() * 400);
+  }
+  throw lastErr;
+}
+const nwsUrls = {};   // remembered forecast URL per resort
+try{ Object.assign(nwsUrls, JSON.parse(localStorage.getItem("ikon-nws-urls") || "{}")); }catch(e){}
+
+async function fetchNws(r){
+  try{
+    let fcUrl = nwsUrls[r.id];
+    if(!fcUrl){
+      fcUrl = (await nwsJson(`https://api.weather.gov/points/${r.lat.toFixed(4)},${r.lon.toFixed(4)}`)).properties.forecast;
+      nwsUrls[r.id] = fcUrl;
+      try{ localStorage.setItem("ikon-nws-urls", JSON.stringify(nwsUrls)); }catch(e){}
+    }
+    state.nws[r.id] = { periods: (await nwsJson(fcUrl)).properties.periods, from: null };
+    paintNws(r);
+  }catch(e){
+    delete nwsUrls[r.id];   // look the point up fresh next time
+    console.info(`NWS unavailable for ${r.name} right now; using a nearby forecast instead.`);
+    if(!state.nws[r.id]?.periods) state.nws[r.id] = { error:true };
+  }
+}
+
+/* Fetch 3 at a time instead of all at once, then fill any gaps with the
+   closest mountain in the same region that did load. */
+async function fetchAllNws(){
+  const queue = [...RESORTS];
+  const worker = async () => { while(queue.length){ await fetchNws(queue.shift()); } };
+  await Promise.all([worker(), worker(), worker()]);
+  RESORTS.forEach(r => {
+    if(!state.nws[r.id]?.error) return;
+    const near = RESORTS
+      .filter(o => o.region === r.region && o.id !== r.id && state.nws[o.id]?.periods && !state.nws[o.id].from)
+      .sort((a,b) => Math.hypot(a.lat-r.lat,a.lon-r.lon) - Math.hypot(b.lat-r.lat,b.lon-r.lon))[0];
+    if(near) state.nws[r.id] = { periods: state.nws[near.id].periods, from: near.name, error:false };
+  });
+  RESORTS.forEach(paintNws);
+}
+
+async function refreshAll(){
+  $("#status").textContent = "updating…";
+  refreshCams();
+  await Promise.all([fetchWeather(), fetchAllNws()]);
+  $("#status").textContent = "updated " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+}
+
+/* ---------------- lightbox ---------------- */
+let lbCam = null, lbResort = null;
+function openLightbox(r, c, src){
+  lbCam = c; lbResort = r;
+  $("#lb-title").textContent = `${r.name} · ${c.label}`;
+  $("#lb-page").href = r.camPage;
+  $("#lb-live").hidden = !c.live;
+  $("#lb-live").textContent = "Watch live";
+  $("#lb-body").innerHTML = `<img src="${esc(src)}" alt="">`;
+  $("#lb").classList.add("open");
+}
+function closeLightbox(){ $("#lb").classList.remove("open"); $("#lb-body").innerHTML = ""; }
+$("#lb-close").onclick = closeLightbox;
+$("#lb").addEventListener("click", e => { if(e.target.id==="lb" || e.target.id==="lb-body") closeLightbox(); });
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeLightbox(); });
+$("#lb-live").onclick = () => {
+  const showingLive = $("#lb-body iframe");
+  if(showingLive){
+    const img = document.querySelector(`.cam[data-r="${lbResort.id}"] img`);
+    $("#lb-body").innerHTML = `<img src="${esc(img?.src||"")}" alt="">`;
+    $("#lb-live").textContent = "Watch live";
+  } else {
+    $("#lb-body").innerHTML = `<iframe src="${esc(lbCam.live)}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+    $("#lb-live").textContent = "Show still image";
+  }
+};
+
+/* ---------------- controls ---------------- */
+document.querySelectorAll("[data-sort]").forEach(b => b.onclick = () => {
+  state.sort = b.dataset.sort;
+  document.querySelectorAll("[data-sort]").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  renderGrid();
+});
+document.querySelectorAll("[data-size]").forEach(b => b.onclick = () => {
+  document.body.dataset.size = b.dataset.size;
+  document.querySelectorAll("button[data-size]").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  try{ localStorage.setItem("ikon-size", b.dataset.size); }catch(e){}
+});
+$("#board").addEventListener("click", e => {
+  const id = e.target.closest("[data-jump]")?.dataset.jump; if(!id) return;
+  const card = document.getElementById("card-"+id);
+  card.scrollIntoView({behavior:"smooth", block:"start"});
+  card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash");
+});
+$("#refresh").onclick = refreshAll;
+
+try{ const s = localStorage.getItem("ikon-size"); if(s){ document.querySelector(`button[data-size="${s}"]`)?.click(); } }catch(e){}
+
+/* ---------------- go ---------------- */
+renderGrid();
+refreshAll();
+setInterval(refreshCams, CAM_REFRESH_MS);
+setInterval(() => { fetchWeather(); fetchAllNws(); $("#status").textContent = "updated " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"}); }, WX_REFRESH_MS);
+</script>
+</body>
+</html>
