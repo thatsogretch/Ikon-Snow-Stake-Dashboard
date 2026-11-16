@@ -121,7 +121,7 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
-      "status": "Opening Nov 26",
+      "status": "Closed",
       "detail": "Opening Nov 26",
       "lifts_open": null,
       "lifts_total": 20,
@@ -133,9 +133,9 @@
       "surface": null,
       "notes": null,
       "reported_at": "2026-11-16T12:55:00Z",
-      "terrain_url": null
+      "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-16T15:06:23Z",
+  "updated": "2026-11-16T16:47:11Z",
   "source": "OpenSnow resort reports"
 }
