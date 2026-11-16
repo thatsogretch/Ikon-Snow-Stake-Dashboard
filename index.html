@@ -236,12 +236,16 @@
   .chip:first-child{background:var(--blue2)!important;color:#fff;border:3px solid var(--navy)!important;padding:8px 14px!important;cursor:default}
 
   /* Cards: white with a pile of snow on top */
-  main{padding:62px 40px 48px;gap:58px 40px}
+  main{padding:66px 40px 48px;gap:62px 40px}
   .card{background:#CDEBFF;border:3px solid var(--navy);border-radius:var(--radius);box-shadow:0 8px 0 var(--navy);overflow:visible;position:relative}
-  .card::before{content:"";position:absolute;left:-3px;right:-3px;top:-27px;height:54px;pointer-events:none;z-index:1;
-    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 60' preserveAspectRatio='none'%3E%3Cpath d='M6 58 C2 30 30 18 52 26 C62 4 104 2 118 22 C134 8 168 10 176 28 C192 12 230 14 236 32 C252 16 290 18 296 34 C314 18 352 20 356 38 C372 28 398 38 394 58 Z' fill='%23fff' stroke='%2314324D' stroke-width='3' vector-effect='non-scaling-stroke' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+  /* Snow on each card: repeating mounds along the top edge (tiles keep their shape at any card width)
+     plus a snow band inside the card that follows its rounded corners and drips along its lower edge */
+  .card::before{content:"";position:absolute;left:22px;right:22px;top:-29px;height:34px;pointer-events:none;z-index:3;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='34' viewBox='0 0 170 34'%3E%3Cpath d='M0 28 C8 28 12 14 30 14 C44 14 46 22 58 22 C64 10 80 4 98 4 C116 4 120 20 128 20 C136 12 144 12 152 16 C160 20 164 28 170 28 V34 H0 Z' fill='%23fff'/%3E%3Cpath d='M0 28 C8 28 12 14 30 14 C44 14 46 22 58 22 C64 10 80 4 98 4 C116 4 120 20 128 20 C136 12 144 12 152 16 C160 20 164 28 170 28' fill='none' stroke='%2314324D' stroke-width='3'/%3E%3C/svg%3E") left bottom/170px 34px;background-repeat:round no-repeat}
+  .card::after{content:"";position:absolute;left:0;right:0;top:0;height:46px;pointer-events:none;z-index:1;border-radius:27px 27px 0 0;
+    background:linear-gradient(#fff,#fff) left top/100% 25px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='22' viewBox='0 0 96 22'%3E%3Cpath d='M0 0 H96 V3 C88 3 86 6 80 6 C76 6 75 18 70 18 C65 18 64 6 58 6 C50 6 48 3 40 3 C34 3 33 10 28 10 C23 10 22 3 14 3 C8 3 6 3 0 3 Z' fill='%23fff'/%3E%3Cpath d='M96 3 C88 3 86 6 80 6 C76 6 75 18 70 18 C65 18 64 6 58 6 C50 6 48 3 40 3 C34 3 33 10 28 10 C23 10 22 3 14 3 C8 3 6 3 0 3' fill='none' stroke='%2314324D' stroke-width='2.5'/%3E%3C/svg%3E") left 24px/96px 22px;background-repeat:no-repeat,repeat-x}
   .card.flash{animation:none;box-shadow:0 8px 0 var(--blue2)}
-  .card-h{position:relative;z-index:2;background:transparent;padding:30px 20px 10px;border-bottom:0}
+  .card-h{position:relative;z-index:2;background:transparent;padding:48px 20px 10px;border-bottom:0}
   .card-h h2{font-family:var(--display);font-weight:400;font-size:30px;line-height:1;color:var(--blue2);-webkit-text-stroke:1.5px var(--navy);paint-order:stroke fill}
   .card:nth-child(4n+2) .card-h h2{color:var(--green2)}
   .card:nth-child(4n+3) .card-h h2{color:var(--red)}
