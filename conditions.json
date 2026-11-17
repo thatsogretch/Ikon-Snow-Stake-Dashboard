@@ -42,7 +42,7 @@
       "percent_open": 0.01,
       "surface": "Machine Made",
       "notes": null,
-      "reported_at": "2026-11-16T13:44:32Z",
+      "reported_at": "2026-11-17T13:43:57Z",
       "terrain_url": "https://www.winterparkresort.com/the-mountain/mountain-report#lift-and-trail-status"
     },
     "eldora": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-17T13:52:06Z",
+  "updated": "2026-11-17T14:58:19Z",
   "source": "OpenSnow resort reports"
 }
