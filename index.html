@@ -296,7 +296,7 @@
   .stat .v{width:70px;height:70px;margin:0;border-radius:50%;background:#fff;border:3px solid var(--navy);box-shadow:inset -6px -6px 0 #DCEFFF;
            display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:400;font-size:22px;color:var(--navy);line-height:1}
   .stat .v small{font-family:var(--sans);font-weight:900;font-size:10px;color:var(--muted)}
-  .stat .v.hot{background:var(--sun)}
+  .stat .v.hot{background:#fff;color:var(--navy);text-shadow:none;box-shadow:inset -6px -6px 0 #DCEFFF}
 
   .week{margin:10px 16px 0;border:3px solid var(--navy);border-radius:18px;background:#fff}
   .day .amt{color:var(--navy);font-weight:800}
@@ -867,10 +867,31 @@ async function fetchWeather(){
     temperature_unit: "fahrenheit", wind_speed_unit: "mph", precipitation_unit: "inch",
     timezone: "America/Denver",
   });
+  /* Show the last good weather from this device right away (kept up to 12 hours),
+     so a slow or failed request never leaves the cards blank. */
+  if(!Object.keys(state.wx).length){
+    try{
+      const c = JSON.parse(localStorage.getItem("wxCache"));
+      if(c && Date.now() - c.t < 12 * 3600e3){ state.wx = c.wx; state.wxFrom = c.t; RESORTS.forEach(paintWx); }
+    }catch(_){}
+  }
   try{
-    const res = await fetch("https://api.open-meteo.com/v1/forecast?" + q);
-    if(!res.ok) throw new Error(res.status);
-    let data = await res.json();
+    /* Open-Meteo occasionally drops or times out a request, so retry a few times before giving up. */
+    let data, lastErr;
+    for(let i = 0; i < 4 && !data; i++){
+      if(i) await sleep([0, 3000, 10000, 30000][i]);
+      try{
+        const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 15000);
+        const res = await fetch("https://api.open-meteo.com/v1/forecast?" + q, {signal: ctl.signal});
+        clearTimeout(timer);
+        if(!res.ok) throw new Error("HTTP " + res.status + " " + (await res.text()).slice(0, 160));
+        data = await res.json();
+      }catch(err){
+        lastErr = err;
+        console.info(`Open-Meteo attempt ${i+1} failed:`, err.name === "AbortError" ? "timed out after 15s" : (err.message || err));
+      }
+    }
+    if(!data) throw lastErr;
     if(!Array.isArray(data)) data = [data];
     data.forEach((d,i)=>{
       const r = RESORTS[i];
@@ -893,6 +914,8 @@ async function fetchWeather(){
         past24: sum(idx-23, idx+1), next24: sum(idx+1, idx+25), next72: sum(idx+1, idx+73), days,
       };
     });
+    state.wxFrom = null;
+    try{ localStorage.setItem("wxCache", JSON.stringify({t: Date.now(), wx: state.wx})); }catch(_){}
   }catch(e){
     console.info("Open-Meteo weather unavailable right now; will retry on the next refresh.");
     RESORTS.forEach(r=>{ if(!state.wx[r.id]) state.wx[r.id] = {error:true}; });
@@ -956,7 +979,11 @@ async function refreshAll(){
   $("#status").textContent = "updating…";
   refreshCams();
   await Promise.all([fetchWeather(), fetchAllNws(), fetchTrail()]);
-  $("#status").textContent = "updated " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+  setStatus();
+}
+const hm = t => new Date(t).toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+function setStatus(){
+  $("#status").textContent = "updated " + hm(Date.now()) + (state.wxFrom ? " · weather from " + hm(state.wxFrom) : "");
 }
 
 /* ---------------- lightbox ---------------- */
@@ -1088,7 +1115,7 @@ try{ const s = localStorage.getItem("ikon-size"); if(s){ document.querySelector(
 renderGrid();
 refreshAll();
 setInterval(refreshCams, CAM_REFRESH_MS);
-setInterval(() => { fetchWeather(); fetchAllNws(); fetchTrail(); $("#status").textContent = "updated " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"}); }, WX_REFRESH_MS);
+setInterval(async () => { await Promise.all([fetchWeather(), fetchAllNws(), fetchTrail()]); setStatus(); }, WX_REFRESH_MS);
 </script>
 </body>
 </html>
