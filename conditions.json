@@ -26,8 +26,8 @@
       "acres_total": 2538,
       "percent_open": 0.02,
       "surface": null,
-      "notes": "Good Morning and welcome back to another week at Copper Mountain! We've got some sun ahead of us today with a high near 50° and calm winds.Crews have been working around the clock getting more of the mountain prepped while we wait for snow, So be sure to thank a snowmaker for making this early season possible! In the meantime please be respectful of all closures, be mindful of your speed and remember that the season is just getting started. We'll see you out there!",
-      "reported_at": "2026-11-16T12:00:00Z",
+      "notes": "Good morning from Copper Mountain!Today's forecast calls for partly sunny skies with increasing clouds as a storm approaches. Temperatures will reach the upper 30s to low 40s, accompanied by light southerly winds. Snow is expected this evening, with the potential for up to 1 to 2 inches of new snow. We're also keeping an eye on the forecast for a possibly stronger storm this weekend!Our snowmaking and slope maintenance teams continue to work hard to expand open terrain while we eagerly wait for more snowfall. In the meantime, get out there and enjoy making turns! Remember to always ski and rid",
+      "reported_at": "2026-11-17T12:00:00Z",
       "terrain_url": "https://www.coppercolorado.com/the-mountain/trail-lift-info/winter-trail-report"
     },
     "winterpark": {
@@ -87,7 +87,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-16T12:45:00Z",
+      "reported_at": "2026-11-17T12:56:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -102,7 +102,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-16T12:54:00Z",
+      "reported_at": "2026-11-17T12:56:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
     },
     "buttermilk": {
@@ -117,7 +117,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-16T12:53:00Z",
+      "reported_at": "2026-11-17T12:56:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
@@ -132,10 +132,10 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-16T12:55:00Z",
+      "reported_at": "2026-11-17T12:51:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-16T16:47:11Z",
+  "updated": "2026-11-17T13:52:06Z",
   "source": "OpenSnow resort reports"
 }
