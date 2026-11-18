@@ -12,7 +12,7 @@
       "percent_open": 0.01,
       "surface": "Machine Groomed",
       "notes": null,
-      "reported_at": "2026-11-16T14:19:00Z",
+      "reported_at": "2026-11-18T14:52:25Z",
       "terrain_url": "https://www.arapahoebasin.com/snow-report/#terrainAndLiftStatus"
     },
     "copper": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-18T14:22:05Z",
+  "updated": "2026-11-18T15:32:34Z",
   "source": "OpenSnow resort reports"
 }
