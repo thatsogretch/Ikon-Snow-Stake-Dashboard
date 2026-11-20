@@ -81,13 +81,13 @@
       "lifts_open": null,
       "lifts_total": 6,
       "runs_open": null,
-      "runs_total": 115,
+      "runs_total": 104,
       "acres_open": null,
       "acres_total": null,
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-20T12:51:00Z",
+      "reported_at": "2026-11-20T18:06:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-20T17:01:43Z",
+  "updated": "2026-11-20T19:01:56Z",
   "source": "OpenSnow resort reports"
 }
