@@ -17,14 +17,14 @@
     },
     "copper": {
       "status": "Open",
-      "detail": "Open (2%)",
+      "detail": "Open (4%)",
       "lifts_open": 3,
       "lifts_total": 23,
-      "runs_open": 4,
+      "runs_open": 6,
       "runs_total": 162,
-      "acres_open": 52,
+      "acres_open": 109,
       "acres_total": 2538,
-      "percent_open": 0.02,
+      "percent_open": 0.04,
       "surface": null,
       "notes": "Exciting news...the Flyer is expected to open today providing access to High Point and Loverly! Our crews are out there now hard at work putting the finishing touches on the trails, so keep an eye on our Terrain Updates channel on Instagram for an opening alert.For today's weather, expect mostly cloudy skies as another storm heads our way. Temperatures will hover in the mid-20s, with light winds and a chance for snow starting around midday. We could pick up a couple inches of fresh snow by the time the lifts stop spinning this afternoon!A friendly reminder that early-season conditions are stil",
       "reported_at": "2026-11-23T12:00:00Z",
@@ -87,7 +87,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-23T12:53:00Z",
+      "reported_at": "2026-11-23T16:01:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -132,10 +132,10 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-23T12:53:00Z",
+      "reported_at": "2026-11-23T16:01:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-23T16:11:31Z",
+  "updated": "2026-11-23T17:34:15Z",
   "source": "OpenSnow resort reports"
 }
