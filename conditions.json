@@ -47,7 +47,7 @@
     },
     "eldora": {
       "status": "Closed",
-      "detail": "Closed",
+      "detail": null,
       "lifts_open": null,
       "lifts_total": 10,
       "runs_open": null,
@@ -57,7 +57,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-16T14:17:09Z",
+      "reported_at": "2026-11-23T00:10:24Z",
       "terrain_url": "https://www.eldora.com/the-mountain/current-conditions/trail-lift-status/"
     },
     "steamboat": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-22T16:50:32Z",
+  "updated": "2026-11-23T11:58:41Z",
   "source": "OpenSnow resort reports"
 }
