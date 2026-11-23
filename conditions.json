@@ -42,7 +42,7 @@
       "percent_open": 0.01,
       "surface": "Machine Made",
       "notes": null,
-      "reported_at": "2026-11-22T13:39:42Z",
+      "reported_at": "2026-11-23T13:28:47Z",
       "terrain_url": "https://www.winterparkresort.com/the-mountain/mountain-report#lift-and-trail-status"
     },
     "eldora": {
@@ -109,15 +109,15 @@
       "status": "Closed",
       "detail": "Opening Dec 12",
       "lifts_open": null,
-      "lifts_total": 5,
+      "lifts_total": null,
       "runs_open": null,
-      "runs_total": 44,
+      "runs_total": null,
       "acres_open": null,
       "acres_total": null,
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-23T12:53:00Z",
+      "reported_at": "2026-11-23T13:03:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-23T13:23:35Z",
+  "updated": "2026-11-23T14:43:02Z",
   "source": "OpenSnow resort reports"
 }
