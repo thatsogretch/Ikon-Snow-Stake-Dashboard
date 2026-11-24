@@ -26,8 +26,8 @@
       "acres_total": 2538,
       "percent_open": 0.04,
       "surface": null,
-      "notes": "Exciting news...the Flyer is expected to open today providing access to High Point and Loverly! Our crews are out there now hard at work putting the finishing touches on the trails, so keep an eye on our Terrain Updates channel on Instagram for an opening alert.For today's weather, expect mostly cloudy skies as another storm heads our way. Temperatures will hover in the mid-20s, with light winds and a chance for snow starting around midday. We could pick up a couple inches of fresh snow by the time the lifts stop spinning this afternoon!A friendly reminder that early-season conditions are stil",
-      "reported_at": "2026-11-23T12:00:00Z",
+      "notes": "New snow overnight! 1 inch in the last 12 hours with a little more to fall in the early AM. Temps will be in the mid-20s with 5-10 mph winds from the west. Be sure to check out the whole mountain as the American Flyer is open along with the American Eagle and Easy Rider!Keep an eye on our Terrain Updates channel on Instagram for opening alerts. Our crews are out there now hard at work filling our trails with snow. A friendly reminder that early-season conditions are still in play. Ski and ride in control, stay aware of changing surfaces and conditions, and give each other plenty of space.Hope ",
+      "reported_at": "2026-11-24T12:00:00Z",
       "terrain_url": "https://www.coppercolorado.com/the-mountain/trail-lift-info/winter-trail-report"
     },
     "winterpark": {
@@ -46,18 +46,18 @@
       "terrain_url": "https://www.winterparkresort.com/the-mountain/mountain-report#lift-and-trail-status"
     },
     "eldora": {
-      "status": "Closed",
-      "detail": null,
-      "lifts_open": null,
-      "lifts_total": null,
-      "runs_open": null,
-      "runs_total": null,
+      "status": "Open",
+      "detail": "Open (3%)",
+      "lifts_open": 1,
+      "lifts_total": 10,
+      "runs_open": 2,
+      "runs_total": 63,
       "acres_open": null,
       "acres_total": null,
-      "percent_open": null,
+      "percent_open": 0.03,
       "surface": null,
-      "notes": null,
-      "reported_at": "2026-11-23T13:00:00Z",
+      "notes": "5:03 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Tuesday, November 24, 2026.HAPPY OPENING DAY!We are officially open for alpine skiing and riding. We couldn’t be more excited to welcome you, our devoted community members, back for another great season at your backyard mountain. We are so proud of our incredibly hardworking employees, whose relentless efforts have allowed us to open today, the Tuesday before Thanksgiving. They deserve a HUGE round of applause.Terrain:We'll have 1,000 vertical feet of downhill riding and skiing on Hornblower and Internationa",
+      "reported_at": "2026-11-24T12:03:18Z",
       "terrain_url": "https://www.eldora.com/the-mountain/current-conditions/trail-lift-status/"
     },
     "steamboat": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-23T22:57:27Z",
+  "updated": "2026-11-24T12:40:47Z",
   "source": "OpenSnow resort reports"
 }
