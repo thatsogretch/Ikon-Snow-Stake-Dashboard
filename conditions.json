@@ -35,7 +35,7 @@
       "detail": "Open (1%)",
       "lifts_open": 5,
       "lifts_total": 24,
-      "runs_open": 6,
+      "runs_open": 7,
       "runs_total": 171,
       "acres_open": 39,
       "acres_total": 3081,
@@ -117,7 +117,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-24T12:56:00Z",
+      "reported_at": "2026-11-24T16:34:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
@@ -132,10 +132,10 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-24T12:52:00Z",
+      "reported_at": "2026-11-24T16:05:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-24T14:25:09Z",
+  "updated": "2026-11-24T17:09:53Z",
   "source": "OpenSnow resort reports"
 }
