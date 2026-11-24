@@ -12,7 +12,7 @@
       "percent_open": 0.01,
       "surface": "Machine Groomed",
       "notes": "We are open for the 2026/27 Season!As A-Basin celebrates its 80th anniversary this winter, the ski area will mark the occasionwith a season-long celebration of the people and culture that have shaped The Legend forgenerations. While much has changed over eight decades, the spirit of A-Basin remains thesame.All season long, join us in celebrating nearly a century of fantastic skiing and riding withevents, deals, giveaways, and more.80-Year-Olds Ski Free – You’ve been with us this whole time. So, in celebration of A-Basin'slegacy and yours, anyone who is 80 years old can ski free every Wednesday",
-      "reported_at": "2026-11-23T12:14:04Z",
+      "reported_at": "2026-11-24T12:34:06Z",
       "terrain_url": "https://www.arapahoebasin.com/snow-report/#terrainAndLiftStatus"
     },
     "copper": {
@@ -35,14 +35,14 @@
       "detail": "Open (1%)",
       "lifts_open": 5,
       "lifts_total": 24,
-      "runs_open": 5,
+      "runs_open": 6,
       "runs_total": 171,
-      "acres_open": 30,
+      "acres_open": 39,
       "acres_total": 3081,
       "percent_open": 0.01,
       "surface": "Machine Made",
       "notes": null,
-      "reported_at": "2026-11-23T13:28:47Z",
+      "reported_at": "2026-11-24T13:36:06Z",
       "terrain_url": "https://www.winterparkresort.com/the-mountain/mountain-report#lift-and-trail-status"
     },
     "eldora": {
@@ -79,33 +79,18 @@
       "status": "Closed",
       "detail": "Opening Nov 26",
       "lifts_open": null,
-      "lifts_total": 6,
+      "lifts_total": null,
       "runs_open": null,
-      "runs_total": 104,
+      "runs_total": null,
       "acres_open": null,
       "acres_total": null,
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-23T16:01:00Z",
+      "reported_at": "2026-11-24T13:02:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
-      "status": "Closed",
-      "detail": "Opening Dec 12",
-      "lifts_open": null,
-      "lifts_total": 5,
-      "runs_open": null,
-      "runs_total": 117,
-      "acres_open": null,
-      "acres_total": null,
-      "percent_open": null,
-      "surface": null,
-      "notes": null,
-      "reported_at": "2026-11-23T16:01:00Z",
-      "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
-    },
-    "buttermilk": {
       "status": "Closed",
       "detail": "Opening Dec 12",
       "lifts_open": null,
@@ -117,7 +102,22 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-23T13:03:00Z",
+      "reported_at": "2026-11-24T13:10:00Z",
+      "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
+    },
+    "buttermilk": {
+      "status": "Closed",
+      "detail": "Opening Dec 12",
+      "lifts_open": null,
+      "lifts_total": 5,
+      "runs_open": null,
+      "runs_total": 44,
+      "acres_open": null,
+      "acres_total": null,
+      "percent_open": null,
+      "surface": null,
+      "notes": null,
+      "reported_at": "2026-11-24T12:56:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
@@ -132,10 +132,10 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-23T10:07:00Z",
+      "reported_at": "2026-11-24T12:52:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-24T12:40:47Z",
+  "updated": "2026-11-24T14:25:09Z",
   "source": "OpenSnow resort reports"
 }
