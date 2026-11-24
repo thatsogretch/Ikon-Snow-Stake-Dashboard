@@ -33,16 +33,16 @@
     "winterpark": {
       "status": "Open",
       "detail": "Open (1%)",
-      "lifts_open": 5,
+      "lifts_open": 6,
       "lifts_total": 24,
-      "runs_open": 7,
+      "runs_open": 8,
       "runs_total": 171,
-      "acres_open": 39,
+      "acres_open": 45,
       "acres_total": 3081,
       "percent_open": 0.01,
       "surface": "Machine Made",
       "notes": null,
-      "reported_at": "2026-11-24T13:36:06Z",
+      "reported_at": "2026-11-24T17:02:34Z",
       "terrain_url": "https://www.winterparkresort.com/the-mountain/mountain-report#lift-and-trail-status"
     },
     "eldora": {
@@ -70,9 +70,9 @@
       "acres_open": null,
       "acres_total": null,
       "percent_open": null,
-      "surface": null,
+      "surface": "--",
       "notes": null,
-      "reported_at": "2026-11-23T13:02:52Z",
+      "reported_at": "2026-11-24T17:13:48Z",
       "terrain_url": "https://www.steamboat.com/the-mountain/mountain-report"
     },
     "aspenmtn": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-24T17:09:53Z",
+  "updated": "2026-11-24T18:29:39Z",
   "source": "OpenSnow resort reports"
 }
