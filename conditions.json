@@ -12,13 +12,13 @@
       "percent_open": 0.01,
       "surface": "Machine Groomed",
       "notes": "We are open for the 2026/27 Season!As A-Basin celebrates its 80th anniversary this winter, the ski area will mark the occasionwith a season-long celebration of the people and culture that have shaped The Legend forgenerations. While much has changed over eight decades, the spirit of A-Basin remains thesame.All season long, join us in celebrating nearly a century of fantastic skiing and riding withevents, deals, giveaways, and more.80-Year-Olds Ski Free – You’ve been with us this whole time. So, in celebration of A-Basin'slegacy and yours, anyone who is 80 years old can ski free every Wednesday",
-      "reported_at": "2026-11-24T12:34:06Z",
+      "reported_at": "2026-11-25T12:01:50Z",
       "terrain_url": "https://www.arapahoebasin.com/snow-report/#terrainAndLiftStatus"
     },
     "copper": {
       "status": "Open",
       "detail": "Open (4%)",
-      "lifts_open": 3,
+      "lifts_open": 4,
       "lifts_total": 23,
       "runs_open": 6,
       "runs_total": 162,
@@ -26,8 +26,8 @@
       "acres_total": 2538,
       "percent_open": 0.04,
       "surface": null,
-      "notes": "New snow overnight! 1 inch in the last 12 hours with a little more to fall in the early AM. Temps will be in the mid-20s with 5-10 mph winds from the west. Be sure to check out the whole mountain as the American Flyer is open along with the American Eagle and Easy Rider!Keep an eye on our Terrain Updates channel on Instagram for opening alerts. Our crews are out there now hard at work filling our trails with snow. A friendly reminder that early-season conditions are still in play. Ski and ride in control, stay aware of changing surfaces and conditions, and give each other plenty of space.Hope ",
-      "reported_at": "2026-11-24T12:00:00Z",
+      "notes": "Good morning and Happy Wednesday!No new snow to report this morning. For Thanksgiving Eve, we can expect bright, sunny skies with temps in the mid-30s at mid-mountain. Winds will be light out of the WSW, staying under 10mph throughout most of the day. Similar weather can be expected for Thanksgiving Day. Snow returns early Saturday morning with decent accumulations possible; stay tuned!Later this morning, we expect the Pitchfork lift and the Green Acres Beginner Area to open for the season, expanding our early season beginner terrain offerings. We'll have more terrain announcements to share la",
+      "reported_at": "2026-11-25T12:00:00Z",
       "terrain_url": "https://www.coppercolorado.com/the-mountain/trail-lift-info/winter-trail-report"
     },
     "winterpark": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-24T18:29:39Z",
+  "updated": "2026-11-25T12:44:22Z",
   "source": "OpenSnow resort reports"
 }
