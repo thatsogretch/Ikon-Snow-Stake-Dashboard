@@ -42,7 +42,7 @@
       "percent_open": 0.01,
       "surface": "Machine Made",
       "notes": null,
-      "reported_at": "2026-11-24T17:02:34Z",
+      "reported_at": "2026-11-25T13:39:41Z",
       "terrain_url": "https://www.winterparkresort.com/the-mountain/mountain-report#lift-and-trail-status"
     },
     "eldora": {
@@ -56,8 +56,8 @@
       "acres_total": null,
       "percent_open": 0.03,
       "surface": null,
-      "notes": "5:03 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Tuesday, November 24, 2026.HAPPY OPENING DAY!We are officially open for alpine skiing and riding. We couldn’t be more excited to welcome you, our devoted community members, back for another great season at your backyard mountain. We are so proud of our incredibly hardworking employees, whose relentless efforts have allowed us to open today, the Tuesday before Thanksgiving. They deserve a HUGE round of applause.Terrain:We'll have 1,000 vertical feet of downhill riding and skiing on Hornblower and Internationa",
-      "reported_at": "2026-11-24T12:03:18Z",
+      "notes": "5:30 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Wednesday, November 25, 2026.Eldora is officially open for alpine skiing and riding! We couldn’t be more excited to welcome you, our devoted community members, back for another great season at your backyard mountain. We are so proud of our incredibly hardworking employees, whose relentless efforts have allowed us to open this week. They deserve a HUGE round of applause.Terrain:We'll have 1,000 vertical feet of downhill riding and skiing on Hornblower and International trails, from the summit of Challenge Mou",
+      "reported_at": "2026-11-25T12:30:59Z",
       "terrain_url": "https://www.eldora.com/the-mountain/current-conditions/trail-lift-status/"
     },
     "steamboat": {
@@ -87,7 +87,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-24T13:02:00Z",
+      "reported_at": "2026-11-25T12:53:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -102,40 +102,40 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-24T13:10:00Z",
+      "reported_at": "2026-11-25T13:10:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
     },
     "buttermilk": {
       "status": "Closed",
       "detail": "Opening Dec 12",
       "lifts_open": null,
-      "lifts_total": 5,
+      "lifts_total": null,
       "runs_open": null,
-      "runs_total": 44,
+      "runs_total": null,
       "acres_open": null,
       "acres_total": null,
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-24T16:34:00Z",
+      "reported_at": "2026-11-25T13:10:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
       "status": "Closed",
       "detail": "Opening Nov 26",
       "lifts_open": null,
-      "lifts_total": 20,
+      "lifts_total": null,
       "runs_open": null,
-      "runs_total": 98,
+      "runs_total": null,
       "acres_open": null,
       "acres_total": null,
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-24T16:05:00Z",
+      "reported_at": "2026-11-25T12:53:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-25T12:44:22Z",
+  "updated": "2026-11-25T14:27:02Z",
   "source": "OpenSnow resort reports"
 }
