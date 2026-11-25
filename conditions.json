@@ -79,7 +79,7 @@
       "status": "Closed",
       "detail": "Opening Nov 26",
       "lifts_open": null,
-      "lifts_total": 6,
+      "lifts_total": 8,
       "runs_open": null,
       "runs_total": 104,
       "acres_open": null,
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-25T17:10:13Z",
+  "updated": "2026-11-25T21:38:18Z",
   "source": "OpenSnow resort reports"
 }
