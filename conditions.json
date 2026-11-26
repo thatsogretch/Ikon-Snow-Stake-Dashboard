@@ -26,7 +26,7 @@
       "acres_total": 2538,
       "percent_open": 0.04,
       "surface": null,
-      "notes": "Happy Thanksgiving! We sure are thankful for colder temps this week as a storm is expected to roll in this weekend.No new snow to report this morning. For Thanksgiving Eve, we can expect sunny skies with temps in the mid-30s at mid-mountain. Winds will be out of the WNW ranging from 5 to 10 mph and gusting into the 20's.Yesterday the Pitchfork lift and the Green Acres Beginner Area opened for the season, expanding our early season beginner terrain offerings. We'll have more terrain announcements to share later this week. Keep an eye on our Terrain Updates channel on Instagram to stay locked in",
+      "notes": "Happy Thanksgiving! We sure are thankful for colder temps this week as a storm is expected to roll in this weekend.No new snow to report this morning. For Thanksgiving, we can expect sunny skies with temps in the mid-30s at mid-mountain. Winds will be out of the WNW ranging from 5 to 10 mph and gusting into the 20's.Yesterday the Pitchfork lift and the Green Acres Beginner Area opened for the season, expanding our early season beginner terrain offerings. We'll have more terrain announcements to share later this week. Keep an eye on our Terrain Updates channel on Instagram to stay locked in wit",
       "reported_at": "2026-11-26T12:00:00Z",
       "terrain_url": "https://www.coppercolorado.com/the-mountain/trail-lift-info/winter-trail-report"
     },
@@ -78,7 +78,7 @@
     "aspenmtn": {
       "status": "Open",
       "detail": "Open (5%)",
-      "lifts_open": 0,
+      "lifts_open": 1,
       "lifts_total": 6,
       "runs_open": 4,
       "runs_total": 104,
@@ -87,7 +87,7 @@
       "percent_open": 0.05,
       "surface": null,
       "notes": "Aspen Mountain opens for the 2026-2027 winter season on November 26",
-      "reported_at": "2026-11-26T13:38:00Z",
+      "reported_at": "2026-11-26T15:54:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-26T14:42:24Z",
+  "updated": "2026-11-26T16:08:58Z",
   "source": "OpenSnow resort reports"
 }
