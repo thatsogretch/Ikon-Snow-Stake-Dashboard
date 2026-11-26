@@ -6,13 +6,13 @@
       "lifts_open": 4,
       "lifts_total": 9,
       "runs_open": 4,
-      "runs_total": 147,
-      "acres_open": 0,
-      "acres_total": 1428,
+      "runs_total": 145,
+      "acres_open": null,
+      "acres_total": null,
       "percent_open": 0.03,
       "surface": "Machine Groomed",
-      "notes": "We are open for the 2026/27 Season!As A-Basin celebrates its 80th anniversary this winter, the ski area will mark the occasionwith a season-long celebration of the people and culture that have shaped The Legend forgenerations. While much has changed over eight decades, the spirit of A-Basin remains thesame.All season long, join us in celebrating nearly a century of fantastic skiing and riding withevents, deals, giveaways, and more.80-Year-Olds Ski Free – You’ve been with us this whole time. So, in celebration of A-Basin'slegacy and yours, anyone who is 80 years old can ski free every Wednesday",
-      "reported_at": "2026-11-25T12:01:50Z",
+      "notes": null,
+      "reported_at": "2026-11-26T13:12:00Z",
       "terrain_url": "https://www.arapahoebasin.com/snow-report/#terrainAndLiftStatus"
     },
     "copper": {
@@ -26,8 +26,8 @@
       "acres_total": 2538,
       "percent_open": 0.04,
       "surface": null,
-      "notes": "Good morning and Happy Wednesday!No new snow to report this morning. For Thanksgiving Eve, we can expect bright, sunny skies with temps in the mid-30s at mid-mountain. Winds will be light out of the WSW, staying under 10mph throughout most of the day. Similar weather can be expected for Thanksgiving Day. Snow returns early Saturday morning with decent accumulations possible; stay tuned!Later this morning, we expect the Pitchfork lift and the Green Acres Beginner Area to open for the season, expanding our early season beginner terrain offerings. We'll have more terrain announcements to share la",
-      "reported_at": "2026-11-25T12:00:00Z",
+      "notes": "Happy Thanksgiving! We sure are thankful for colder temps this week as a storm is expected to roll in this weekend.No new snow to report this morning. For Thanksgiving Eve, we can expect sunny skies with temps in the mid-30s at mid-mountain. Winds will be out of the WNW ranging from 5 to 10 mph and gusting into the 20's.Yesterday the Pitchfork lift and the Green Acres Beginner Area opened for the season, expanding our early season beginner terrain offerings. We'll have more terrain announcements to share later this week. Keep an eye on our Terrain Updates channel on Instagram to stay locked in",
+      "reported_at": "2026-11-26T12:00:00Z",
       "terrain_url": "https://www.coppercolorado.com/the-mountain/trail-lift-info/winter-trail-report"
     },
     "winterpark": {
@@ -47,17 +47,17 @@
     },
     "eldora": {
       "status": "Open",
-      "detail": "Open (5%)",
+      "detail": "Open (6%)",
       "lifts_open": 1,
       "lifts_total": 10,
-      "runs_open": 3,
+      "runs_open": 4,
       "runs_total": 63,
       "acres_open": null,
       "acres_total": null,
-      "percent_open": 0.05,
+      "percent_open": 0.06,
       "surface": null,
-      "notes": "5:30 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Wednesday, November 25, 2026.Eldora is officially open for alpine skiing and riding! We couldn’t be more excited to welcome you, our devoted community members, back for another great season at your backyard mountain. We are so proud of our incredibly hardworking employees, whose relentless efforts have allowed us to open this week. They deserve a HUGE round of applause.Terrain:We'll have 1,000 vertical feet of downhill riding and skiing on Hornblower and International trails, from the summit of Challenge Mou",
-      "reported_at": "2026-11-25T12:30:59Z",
+      "notes": "5:39 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Thanksgiving Day, Wednesday, November 25, 2026.We've got so much to be grateful for—our devoted mountain crews who have worked so hard to get the mountain open and continue to crush, around the clock, to open more terrain; our amazing mountain and the beautiful natural environment we call home; and you, our devoted guests who make the Eldora community so special. Thank you!Yesterday, our teams opened two more trails, Windmill and Klondike, bringing the total to two complete top-to-bottom runs, plus an amazin",
+      "reported_at": "2026-11-26T12:39:20Z",
       "terrain_url": "https://www.eldora.com/the-mountain/current-conditions/trail-lift-status/"
     },
     "steamboat": {
@@ -76,18 +76,18 @@
       "terrain_url": "https://www.steamboat.com/the-mountain/mountain-report"
     },
     "aspenmtn": {
-      "status": "Closed",
-      "detail": null,
-      "lifts_open": null,
-      "lifts_total": 8,
-      "runs_open": null,
+      "status": "Open",
+      "detail": "Open",
+      "lifts_open": 0,
+      "lifts_total": 6,
+      "runs_open": 0,
       "runs_total": 104,
-      "acres_open": null,
-      "acres_total": null,
+      "acres_open": 0,
+      "acres_total": 828,
       "percent_open": null,
       "surface": null,
-      "notes": null,
-      "reported_at": "2026-11-25T12:53:00Z",
+      "notes": "Aspen Mountain opens for the 2026-2027 winter season on November 26",
+      "reported_at": "2026-11-26T12:54:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -102,7 +102,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-25T13:10:00Z",
+      "reported_at": "2026-11-26T12:54:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
     },
     "buttermilk": {
@@ -117,25 +117,25 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-25T13:10:00Z",
+      "reported_at": "2026-11-26T12:54:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
-      "status": "Closed",
-      "detail": null,
-      "lifts_open": null,
+      "status": "Open",
+      "detail": "Open",
+      "lifts_open": 0,
       "lifts_total": 20,
-      "runs_open": null,
+      "runs_open": 0,
       "runs_total": 98,
-      "acres_open": null,
-      "acres_total": null,
+      "acres_open": 0,
+      "acres_total": 3342,
       "percent_open": null,
       "surface": null,
-      "notes": null,
-      "reported_at": "2026-11-25T12:53:00Z",
+      "notes": "Snowmass opens for the 2026-2027 winter season on Thursday November 26, 2026",
+      "reported_at": "2026-11-26T12:54:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-26T08:06:09Z",
+  "updated": "2026-11-26T13:30:19Z",
   "source": "OpenSnow resort reports"
 }
