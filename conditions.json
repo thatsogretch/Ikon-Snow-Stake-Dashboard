@@ -56,7 +56,7 @@
       "acres_total": null,
       "percent_open": 0.06,
       "surface": null,
-      "notes": "5:39 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Thanksgiving Day, Wednesday, November 25, 2026.We've got so much to be grateful for—our devoted mountain crews who have worked so hard to get the mountain open and continue to crush, around the clock, to open more terrain; our amazing mountain and the beautiful natural environment we call home; and you, our devoted guests who make the Eldora community so special. Thank you!Yesterday, our teams opened two more trails, Windmill and Klondike, bringing the total to two complete top-to-bottom runs, plus an amazin",
+      "notes": "5:39 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Thanksgiving Day, Thursday, November 26, 2026.We've got so much to be grateful for—our devoted mountain crews who have worked so hard to get the mountain open and continue to crush, around the clock, to open more terrain; our amazing mountain and the beautiful natural environment we call home; and you, our devoted guests who make the Eldora community so special. Thank you!Yesterday, our teams opened two more trails, Windmill and Klondike, bringing the total to two complete top-to-bottom runs, plus an amazing",
       "reported_at": "2026-11-26T12:39:20Z",
       "terrain_url": "https://www.eldora.com/the-mountain/current-conditions/trail-lift-status/"
     },
@@ -78,7 +78,7 @@
     "aspenmtn": {
       "status": "Open",
       "detail": "Open (5%)",
-      "lifts_open": 1,
+      "lifts_open": 2,
       "lifts_total": 6,
       "runs_open": 4,
       "runs_total": 104,
@@ -87,7 +87,7 @@
       "percent_open": 0.05,
       "surface": null,
       "notes": "Aspen Mountain opens for the 2026-2027 winter season on November 26",
-      "reported_at": "2026-11-26T15:54:00Z",
+      "reported_at": "2026-11-26T16:07:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -102,7 +102,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-26T12:54:00Z",
+      "reported_at": "2026-11-26T16:03:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
     },
     "buttermilk": {
@@ -117,7 +117,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-26T12:54:00Z",
+      "reported_at": "2026-11-26T16:03:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
@@ -132,10 +132,10 @@
       "percent_open": 0.01,
       "surface": null,
       "notes": "Happy Thanksgiving and Happy Opening Day for the 2026/2027 Ski Season at Snowmass! The Elk Camp restaurant is open as is the Breathtaker Alpine Coaster!",
-      "reported_at": "2026-11-26T14:18:00Z",
+      "reported_at": "2026-11-26T16:03:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-26T16:08:58Z",
+  "updated": "2026-11-26T17:31:41Z",
   "source": "OpenSnow resort reports"
 }
