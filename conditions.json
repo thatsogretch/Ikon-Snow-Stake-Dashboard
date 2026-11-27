@@ -63,7 +63,7 @@
     "steamboat": {
       "status": "Open",
       "detail": "Open (1%)",
-      "lifts_open": 1,
+      "lifts_open": 4,
       "lifts_total": 23,
       "runs_open": 3,
       "runs_total": 184,
@@ -131,11 +131,11 @@
       "acres_total": 3342,
       "percent_open": 0.01,
       "surface": null,
-      "notes": null,
-      "reported_at": "2026-11-27T13:02:00Z",
+      "notes": "Complimentary s'mores are served daily, 3:30pm, at the Base Village and Mall fire Pits.",
+      "reported_at": "2026-11-27T14:47:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-27T14:24:16Z",
+  "updated": "2026-11-27T15:36:07Z",
   "source": "OpenSnow resort reports"
 }
