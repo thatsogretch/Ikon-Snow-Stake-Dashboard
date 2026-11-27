@@ -62,7 +62,7 @@
     },
     "steamboat": {
       "status": "Closed",
-      "detail": "Opening Nov 27",
+      "detail": null,
       "lifts_open": null,
       "lifts_total": 23,
       "runs_open": null,
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-26T17:31:41Z",
+  "updated": "2026-11-27T07:24:07Z",
   "source": "OpenSnow resort reports"
 }
