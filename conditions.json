@@ -17,14 +17,14 @@
     },
     "copper": {
       "status": "Open",
-      "detail": "Open (4%)",
+      "detail": "Open (5%)",
       "lifts_open": 5,
       "lifts_total": 23,
-      "runs_open": 7,
+      "runs_open": 8,
       "runs_total": 162,
-      "acres_open": 112,
+      "acres_open": 129,
       "acres_total": 2538,
-      "percent_open": 0.04,
+      "percent_open": 0.05,
       "surface": null,
       "notes": "Good morning Copper Mountain! Hopefully everyone survived their Thanksgiving food comas and managed to squeeze into their ski pants this morning!Today we're expecting mostly sunny skis with a high of around 32F. Winds will be coming out of the west northwest at about 15-20 mph, with gusts reaching into the 40sExpect to see the weather start to change around 3:00pm. Clouds should be rolling in, temps will start dropping and hopefully we'll see the beginnings of our next storm.As always stay safe, always ride within your ability and give your fellow skiers and riders plenty of room. Enjoy the su",
       "reported_at": "2026-11-27T12:00:00Z",
@@ -80,14 +80,14 @@
       "detail": "Open (5%)",
       "lifts_open": 2,
       "lifts_total": 6,
-      "runs_open": 4,
+      "runs_open": 3,
       "runs_total": 104,
-      "acres_open": 43,
+      "acres_open": 42,
       "acres_total": 828,
       "percent_open": 0.05,
       "surface": null,
       "notes": "We are grateful for skiing, snowboarding and you! Thanks to everyone who came out Thursday to celebrate the 80th time Aspen Mountain opened for the season! Winter is officially underway. Start the season with fresh turns, open runs, and the stoke of getting back on the mountain. Keep the celebrations going this Saturday with opening parties at the Sundeck and Elk Camp. With snow in the forecast, the season is off to a promising start. Here's to 80 years of mountain memories and many more to come. Safety tip of the day: Always stay in control. You must be able to stop or avoid people or objects",
-      "reported_at": "2026-11-27T13:24:00Z",
+      "reported_at": "2026-11-27T16:02:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -102,7 +102,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-27T12:47:00Z",
+      "reported_at": "2026-11-27T16:06:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
     },
     "buttermilk": {
@@ -117,7 +117,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-27T12:47:00Z",
+      "reported_at": "2026-11-27T16:09:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
@@ -132,10 +132,10 @@
       "percent_open": 0.01,
       "surface": null,
       "notes": "Complimentary s'mores are served daily, 3:30pm, at the Base Village and Mall fire Pits.",
-      "reported_at": "2026-11-27T14:47:00Z",
+      "reported_at": "2026-11-27T16:03:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-27T15:36:07Z",
+  "updated": "2026-11-27T16:46:18Z",
   "source": "OpenSnow resort reports"
 }
