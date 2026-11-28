@@ -67,12 +67,12 @@
       "lifts_total": 23,
       "runs_open": 2,
       "runs_total": 184,
-      "acres_open": 38,
+      "acres_open": 50,
       "acres_total": 3741,
       "percent_open": 0.01,
-      "surface": "Machine Made",
-      "notes": "Good Morning, Skiers and Riders! This is Laurie with your snow report from 5am for Friday, November 27. Welcome to winter 26/27 Opening Day! Come early for free Powder Day Donuts and mimosa while supplies last. Our Mid mountain base is 2 inches, the temperature is 31 degrees, the winds are 8 miles per hour from the NNW, with cloudy skies. The Summit base is 7 inches, the temperature is 25 degrees, the winds are 5 miles per hour from the WNW, with cloudy skies. The base temperature is 27 degrees. We will be skiing and riding on 6 lifts, 2 runs, and 38 acres on MM snow. Be sure to stop by Rendez",
-      "reported_at": "2026-11-27T15:32:49Z",
+      "surface": "Powder",
+      "notes": "November 28, 2026- Good Morning Skiers and Riders! This is Laurie with your snow report from 5am for Saturday, November 28th. Remember, the easiest way to get up to date information is on the Ikon Pass app or website. It’s a powder day in the Boat! At Mid Mountain, we’ve had 5 new inches of snow in the past 24 hours, with 5 inches falling since the mountain closed yesterday. At the Summit, we’ve had 7 new inches of snow in the past 24 hours, with 7 inches falling since the mountain closed yesterday. Our Mid mountain base is 7 inches, the temperature is 31 degrees, the winds are 10 miles per ho",
+      "reported_at": "2026-11-28T12:04:09Z",
       "terrain_url": "https://www.steamboat.com/the-mountain/mountain-report"
     },
     "aspenmtn": {
@@ -136,6 +136,6 @@
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-27T17:58:31Z",
+  "updated": "2026-11-28T12:29:52Z",
   "source": "OpenSnow resort reports"
 }
