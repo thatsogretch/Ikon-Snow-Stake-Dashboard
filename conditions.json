@@ -10,9 +10,9 @@
       "acres_open": 0,
       "acres_total": 1428,
       "percent_open": 0.03,
-      "surface": "Machine Groomed",
+      "surface": "Powder",
       "notes": "We are open for the 2026/27 Season!As A-Basin celebrates its 80th anniversary this winter, the ski area will mark the occasionwith a season-long celebration of the people and culture that have shaped The Legend forgenerations. While much has changed over eight decades, the spirit of A-Basin remains thesame.All season long, join us in celebrating nearly a century of fantastic skiing and riding withevents, deals, giveaways, and more.80-Year-Olds Ski Free – You’ve been with us this whole time. So, in celebration of A-Basin'slegacy and yours, anyone who is 80 years old can ski free every Wednesday",
-      "reported_at": "2026-11-27T12:14:08Z",
+      "reported_at": "2026-11-28T12:47:21Z",
       "terrain_url": "https://www.arapahoebasin.com/snow-report/#terrainAndLiftStatus"
     },
     "copper": {
@@ -20,14 +20,14 @@
       "detail": "Open (5%)",
       "lifts_open": 5,
       "lifts_total": 23,
-      "runs_open": 8,
+      "runs_open": 9,
       "runs_total": 162,
-      "acres_open": 129,
+      "acres_open": 137,
       "acres_total": 2538,
       "percent_open": 0.05,
       "surface": null,
-      "notes": "Good morning Copper Mountain! Hopefully everyone survived their Thanksgiving food comas and managed to squeeze into their ski pants this morning!Today we're expecting mostly sunny skis with a high of around 32F. Winds will be coming out of the west northwest at about 15-20 mph, with gusts reaching into the 40sExpect to see the weather start to change around 3:00pm. Clouds should be rolling in, temps will start dropping and hopefully we'll see the beginnings of our next storm.As always stay safe, always ride within your ability and give your fellow skiers and riders plenty of room. Enjoy the su",
-      "reported_at": "2026-11-27T12:00:00Z",
+      "notes": "Hello and Good Morning! Copper's weather report is 2\" of new snow overnight and its still coming down with another 4-6\" possible, making everything look a little more like winter today. It'll be breezy, with a west northwest wind around 15-20mph and gusting near the 40's with temps around 33°.Copper is also hosting the World Cup race this weekend in East village. Event schedule can be found here!Enjoy the new snow and we'll see you out there.",
+      "reported_at": "2026-11-28T12:00:00Z",
       "terrain_url": "https://www.coppercolorado.com/the-mountain/trail-lift-info/winter-trail-report"
     },
     "winterpark": {
@@ -42,7 +42,7 @@
       "percent_open": 0.02,
       "surface": "Machine Made",
       "notes": null,
-      "reported_at": "2026-11-27T12:23:23Z",
+      "reported_at": "2026-11-28T12:14:46Z",
       "terrain_url": "https://www.winterparkresort.com/the-mountain/mountain-report#lift-and-trail-status"
     },
     "eldora": {
@@ -56,8 +56,8 @@
       "acres_total": null,
       "percent_open": 0.06,
       "surface": null,
-      "notes": "10:14 AM update - Alpenglow lift is running at slower speeds due to wind.--5:30 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Friday, November 27, 2026.Hope you're rested after all that turkey. Windmill and Klondike give you two top-to-bottom runs, plus the Woodward terrain park. It's 34 degrees with mostly sunny skies forecasted and a high near 38. It should be windy up top, so layer up and grab a neck gaiter. Skip the I-70 crowds this Black Friday and spend it at your local hill. See ya out there!And don't forget, season pass prices go up Tuesday! Save on ",
-      "reported_at": "2026-11-27T12:30:00Z",
+      "notes": "5:22 AM update –Good morning, skiers and riders! Welcome to the Eldora snow report for Saturday, November 28, 2026.The first Saturday of our winter operating season brings fresh snow: about two inches on the snow stake as of 5:20 AM, with an additional three to five inches throughout the day. Alpenglow chair will spin at 8:30 AM today, serving 1,000 vertical feet of terrain across two top-to-bottom runs, including Hornblower, Windmill, Klondike, and International.Season pass prices go up Tuesday! Save with summer pricing on Eldora Season Passes and lesson products through Monday, Nov 30. Give ",
+      "reported_at": "2026-11-28T12:22:35Z",
       "terrain_url": "https://www.eldora.com/the-mountain/current-conditions/trail-lift-status/"
     },
     "steamboat": {
@@ -87,7 +87,7 @@
       "percent_open": 0.05,
       "surface": null,
       "notes": "We are grateful for skiing, snowboarding and you! Thanks to everyone who came out Thursday to celebrate the 80th time Aspen Mountain opened for the season! Winter is officially underway. Start the season with fresh turns, open runs, and the stoke of getting back on the mountain. Keep the celebrations going this Saturday with opening parties at the Sundeck and Elk Camp. With snow in the forecast, the season is off to a promising start. Here's to 80 years of mountain memories and many more to come. Safety tip of the day: Always stay in control. You must be able to stop or avoid people or objects",
-      "reported_at": "2026-11-27T16:02:00Z",
+      "reported_at": "2026-11-28T12:45:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/lift-status"
     },
     "highlands": {
@@ -102,7 +102,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-27T16:06:00Z",
+      "reported_at": "2026-11-28T12:58:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/lift-status"
     },
     "buttermilk": {
@@ -117,7 +117,7 @@
       "percent_open": null,
       "surface": null,
       "notes": null,
-      "reported_at": "2026-11-27T16:09:00Z",
+      "reported_at": "2026-11-28T13:02:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/buttermilk/lift-status"
     },
     "snowmass": {
@@ -131,11 +131,11 @@
       "acres_total": 3342,
       "percent_open": 0.01,
       "surface": null,
-      "notes": "Complimentary s'mores are served daily, 3:30pm, at the Base Village and Mall fire Pits.",
-      "reported_at": "2026-11-27T16:03:00Z",
+      "notes": "The AspenSnowmass app will give you access to everything you need to enjoy your on-mountain experience.",
+      "reported_at": "2026-11-28T13:02:00Z",
       "terrain_url": "https://www.aspensnowmass.com/four-mountains/snowmass/lift-status"
     }
   },
-  "updated": "2026-11-28T12:29:52Z",
+  "updated": "2026-11-28T13:43:50Z",
   "source": "OpenSnow resort reports"
 }
